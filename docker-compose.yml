@@ -1,0 +1,41 @@
+name: spoekle-com
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: spoekle-mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+      - type: bind
+        source: /data/compose/Spoekle.com/mongo
+        target: /dump
+
+  api:
+    build:
+      context: ./backend
+    container_name: spoekle-api
+    ports:
+      - "83:80"
+    volumes:
+      - type: bind
+        source: /data/compose/Spoekle.com/backend
+        target: /var/www/backend
+    depends_on:
+      - mongo
+    environment:
+      - VIRTUAL_HOST=api-main.spoekle.com
+      - MONGO_URI=mongodb://mongo:27017/spoekleDB
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: spoekle-frontend
+    ports:
+      - "85:80"
+    environment:
+      - VIRTUAL_HOST=spoekle.com
+
+volumes:
+  mongo-data:

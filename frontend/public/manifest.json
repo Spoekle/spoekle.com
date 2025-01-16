@@ -1,0 +1,20 @@
+{
+  "short_name": "ClipSesh!",
+  "name": "ClipSesh! - Rate your favorite clips",
+  "icons": [
+    {
+      "src": "spoekle_logo.webp",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "spoekle_logo.webp",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#161616"
+}
