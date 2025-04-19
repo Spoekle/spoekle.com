@@ -12,7 +12,7 @@ const path = require('path');
 
 const User = require('../models/userModel');
 const authorizeRoles = require('./middleware/AuthorizeRoles');
-const profilePictureUpload = require('./storage/ProfilePictureUpload');
+const { uploaders } = require('./storage/ImageService');
 
 // Get current user details
 router.get('/me', authorizeRoles(['user', 'clipteam', 'editor', 'uploader', 'admin']), async (req, res) => {
@@ -149,7 +149,7 @@ router.post('/resetPassword/confirm', async (req, res) => {
     }
 });
 
-router.post('/uploadProfilePicture', authorizeRoles(['user', 'clipteam', 'editor', 'uploader', 'admin']), profilePictureUpload.single('profilePicture'), async (req, res) => {
+router.post('/uploadProfilePicture', authorizeRoles(['user', 'clipteam', 'editor', 'uploader', 'admin']), uploaders.profilePicture.single('profilePicture'), async (req, res) => {
     try {
         const profilePictureUrl = `https://api.spoekle.com/profilePictures/${req.file.filename}`;
         const userId = req.user.id;

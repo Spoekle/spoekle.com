@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const NotFound = ({ contentAnimationDelay = 0.3 }) => {
     return (
-        <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-200 dark:bg-neutral-900 transition duration-200">
+        <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-100 dark:bg-neutral-900 transition duration-200 pt-20 md:pt-24">
             {/* Animated gradient background */}
             <div className="absolute inset-0 z-0">
-                <div className="w-full h-full bg-gradient-to-br from-purple-400/30 via-indigo-400/20 to-transparent dark:from-purple-900/40 dark:via-indigo-900/20 dark:to-black animate-gradient-move" />
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-400/20 dark:bg-purple-900/30 rounded-full blur-3xl opacity-60 animate-pulse-slow" />
-                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-indigo-400/20 dark:bg-indigo-900/30 rounded-full blur-2xl opacity-50 animate-pulse-slow" />
+                <div className="w-full h-full bg-gradient-to-br from-purple-400/20 via-indigo-400/10 to-transparent dark:from-purple-900/30 dark:via-indigo-900/15 dark:to-transparent transition duration-200" />
+                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-400/10 dark:bg-purple-900/20 rounded-full blur-3xl opacity-60 animate-pulse-slow" />
+                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-indigo-400/10 dark:bg-indigo-900/20 rounded-full blur-2xl opacity-50 animate-pulse-slow" />
             </div>
             {/* Main content */}
             <div className="relative z-10 flex flex-col items-center">

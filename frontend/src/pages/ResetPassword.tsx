@@ -101,10 +101,10 @@ const ResetPassword: React.FC = () => {
     return (
         <div className="min-h-screen text-white flex flex-col items-center bg-neutral-200 dark:bg-neutral-900 transition duration-200">
             <Helmet>
-                <title>Reset Password | ClipSesh</title>
+                <title>Reset Password | Spoekle.com</title>
                 <meta
                     name="description"
-                    content="Reset your password to regain access to your ClipSesh account"
+                    content="Reset your password to regain access to your Spoekle.com account"
                 />
             </Helmet>
             <div

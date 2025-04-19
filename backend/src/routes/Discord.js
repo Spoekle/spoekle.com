@@ -3,9 +3,6 @@ const router = express.Router();
 const axios = require('axios');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const { AdminConfig } = require('../models/configModel');
-const verifyToken = require('./middleware/VerifyToken');
 const secretKey = process.env.SECRET_KEY;
 
 const User = require('../models/userModel');

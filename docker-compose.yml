@@ -1,0 +1,67 @@
+name: spoekle.com
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: spoekle-mongo
+    ports:
+      - "27019:27017"
+    volumes:
+        - mongo-data:/data/db
+        - type: bind
+          source: ./mongo
+          target: /dump
+
+  api:
+    build:
+      context: ./backend
+    container_name: spoekle-api
+    ports:
+      - "87:80"
+    volumes:
+      - type: bind
+        source: ./backend/src/uploads
+        target: /var/www/backend/src/uploads
+      - type: bind
+        source: ./backend/src/profilePictures
+        target: /var/www/backend/src/profilePictures
+      - type: bind
+        source: ./backend/src/download
+        target: /var/www/backend/src/download
+      - type: bind
+        source: ./backend/src/scripts
+        target: /var/www/backend/src/scripts
+      - type: bind
+        source: ./backend/src/download/tmp
+        target: /var/www/backend/src/download/tmp
+    depends_on:
+      - mongo
+    environment:
+      - VIRTUAL_HOST=spoekle.com
+      - MONGO_URI=mongodb://mongo:27017/spoekleDB
+  frontend:
+    build:
+      context: ./frontend
+    container_name: spoekle-frontend
+    ports:
+      - "85:80"
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=spoekle.com
+
+  cdn:
+    image: nginx:alpine
+    container_name: spoekle-cdn
+    ports:
+      - "88:80"
+    volumes:
+      - type: bind
+        source: ./backend/cdn-nginx.conf
+        target: /etc/nginx/conf.d/default.conf
+    environment:
+      - VIRTUAL_HOST=cdn.spoekle.com
+    depends_on:
+      - api
+
+volumes:
+  mongo-data:

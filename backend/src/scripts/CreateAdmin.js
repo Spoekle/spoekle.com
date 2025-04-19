@@ -13,17 +13,17 @@ const createAdminUser = async () => {
             const adminUser = new User({
                 username: adminUsername,
                 password: hashedPassword,
-                role: 'admin',
+                roles: ['admin'],
                 status: 'active',
-                profilePicture: 'https://api.spoekle.com/profilePictures/profile_placeholder.png'
+                profilePicture: 'https://ui-avatars.com/api/?background=random&color=fff&name=Admin'
             });
             await adminUser.save();
         } else {
             hashedPassword = await bcrypt.hash(adminPassword, 10);
             existingAdmin.password = hashedPassword;
-            existingAdmin.role = 'admin';
+            existingAdmin.roles = ['admin'];
             existingAdmin.status = 'active';
-            existingAdmin.profilePicture = 'https://api.spoekle.com/profilePictures/profile_placeholder.png';
+            existingAdmin.profilePicture = 'https://ui-avatars.com/api/?background=random&color=fff&name=Admin';
             await existingAdmin.save();
         }
     } catch (error) {

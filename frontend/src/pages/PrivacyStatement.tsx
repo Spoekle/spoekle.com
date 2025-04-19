@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
-import { FaShieldAlt, FaUserShield, FaDatabase, FaServer, FaLock, FaTrash, FaFileContract } from 'react-icons/fa';
-import PageLayout from '../layouts/DefaultLayout';
+import { FaShieldAlt, FaUserShield, FaDatabase, FaLock, FaTrash, FaFileContract } from 'react-icons/fa';
+import DefaultLayout from '../layouts/DefaultLayout';
+import spoekleGame from '../assets/spoekleGame.webp';
 
 function PrivacyStatement() {
     const contentSections = [
@@ -8,7 +9,7 @@ function PrivacyStatement() {
             id: 'introduction',
             title: '1. Introduction',
             icon: <FaFileContract />,
-            content: 'Welcome to ClipSesh! Your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website.'
+            content: 'Welcome to Spoekle.com! Your privacy is important to me. This Privacy Policy explains how I collect, use, and protect your personal information when you use our website.'
         },
         {
             id: 'collected-info',
@@ -16,7 +17,9 @@ function PrivacyStatement() {
             icon: <FaDatabase />,
             content: 'We collect the following types of information:',
             list: [
-                'IP Address: We collect your IP address to ensure the integrity of our voting system and prevent multiple votes from the same user.'
+                'Personal Information: Information that you provide directly, such as your name, email address, and any other information you choose to provide.',
+                'Information from your Discord Account: If you choose to log in using Discord, we will collect your Discord ID, username, email address, and avatar URL.',
+                'Usage Data: Information about how you use our website, including your IP address, browser type, pages visited, and time spent on each page.'
             ]
         },
         {
@@ -25,7 +28,6 @@ function PrivacyStatement() {
             icon: <FaUserShield />,
             content: 'We use the information we collect in the following ways:',
             list: [
-                'Voting Integrity: To prevent multiple votes from the same IP address and ensure fair voting.',
                 'Service Improvement: To understand how our service is used and to improve its functionality and performance.'
             ]
         },
@@ -41,20 +43,8 @@ function PrivacyStatement() {
             ]
         },
         {
-            id: 'retention',
-            title: '5. Data Retention',
-            icon: <FaServer />,
-            content: 'We will retain your IP address for as long as it is necessary to ensure voting integrity and comply with our legal obligations.'
-        },
-        {
-            id: 'third-party',
-            title: '6. Third-Party Disclosure',
-            icon: <FaShieldAlt />,
-            content: 'We do not sell, trade, or otherwise transfer your IP address to outside parties in any way. All data is and will only be used and stored on the ClipSesh! servers.'
-        },
-        {
             id: 'rights',
-            title: '7. Your Rights',
+            title: '5. Your Rights',
             icon: <FaUserShield />,
             content: 'Depending on your location, you may have the following rights regarding your personal information:',
             list: [
@@ -66,17 +56,17 @@ function PrivacyStatement() {
         },
         {
             id: 'changes',
-            title: '8. Changes to This Privacy Policy',
+            title: '6. Changes to This Privacy Policy',
             icon: <FaTrash />,
             content: 'We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the effective date at the top.'
         }
     ];
 
     return (
-      <PageLayout
+      <DefaultLayout
         title="Privacy Statement"
         subtitle="Your privacy matters to us"
-        backgroundImage="/images/backgrounds/privacy.jpg"
+        backgroundImage={spoekleGame}
         metaDescription="ClipSesh privacy statement - Learn how we protect your data and maintain your privacy while using our service."
       >
         <motion.div 
@@ -88,7 +78,7 @@ function PrivacyStatement() {
               Privacy Policy
             </h1>
             <p className="text-neutral-700 dark:text-neutral-300 font-medium">
-              Effective Date: July 9, 2024
+              Effective Date: April 19, 2025
             </p>
           </header>
           
@@ -133,7 +123,7 @@ function PrivacyStatement() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Cube Community Discord Server
+                            Spoekle Discord Server
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -147,20 +137,20 @@ function PrivacyStatement() {
           
           <div className="mt-10 p-4 bg-neutral-200 dark:bg-neutral-700 rounded-lg text-center">
             <p className="text-neutral-700 dark:text-neutral-300">
-              If you have any questions about this Privacy Policy, please contact us via the 
+              If you have any questions about this Privacy Policy, please contact me in the
               <a 
                 href='https://discord.gg/dwe8mbC' 
                 className='mx-1 text-blue-600 dark:text-blue-400 hover:underline font-medium'
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Cube Community Discord
+                Spoekle Discord Server
               </a>
-              server.
+              .
             </p>
           </div>
         </motion.div>
-      </PageLayout>
+      </DefaultLayout>
     );
 }
 
