@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCode, FaLaptopCode, FaGamepad, FaTiktok, FaServer, FaDesktop, FaCamera } from 'react-icons/fa';
-import { SiReact, SiNodedotjs, SiMongodb, SiJavascript, SiMysql, SiSharp, SiPython, SiUnity, SiBlender, SiTailwindcss, SiExpress, SiAdobepremierepro, SiAdobelightroom, SiAdobephotoshop } from 'react-icons/si';
+import { SiReact, SiNodedotjs, SiMongodb, SiJavascript, SiMysql, SiSharp, SiPython, SiUnity, SiBlender, SiTailwindcss, SiExpress, SiAdobepremierepro, SiAdobelightroom, SiAdobephotoshop, SiTypescript } from 'react-icons/si';
 import DefaultLayout from '../../layouts/DefaultLayout';
 
 // Import header image
@@ -56,6 +56,7 @@ const AboutPage: React.FC = () => {
     ];
 
     const languages = [
+        { icon: <SiTypescript />, name: 'TypeScript', color: 'text-blue-600' },
         { icon: <SiJavascript />, name: 'JavaScript', color: 'text-yellow-400' },
         { icon: <SiMysql />, name: 'MySQL', color: 'text-green-600' },
         { icon: <SiSharp />, name: 'C#', color: 'text-purple-600' },
@@ -74,8 +75,8 @@ const AboutPage: React.FC = () => {
     const pcSetup = [
         { name: 'CPU', description: 'AMD Ryzen 7 7800X3DX' },
         { name: 'GPU', description: 'AMD Radeon 7900XTX' },
-        { name: 'Motherboard', description: 'Gigabyte B650E AORUS ELITE X AX ICE' },
-        { name: 'Power Supply', description: 'Corsair RM850x 850W' },
+        { name: 'Mobo', description: 'Gigabyte B650E AORUS ELITE X AX ICE' },
+        { name: 'PSU', description: 'Corsair RM850x 850W' },
         { name: 'Cooling', description: 'Cooler Master ML240L V2 RGB White' },
         { name: 'RAM', description: '32GB DDR5 6000MHz' },
         { name: 'Storage', description: '2TB NVMe SSD + 1TB NVMe SSD' },
@@ -91,6 +92,13 @@ const AboutPage: React.FC = () => {
         { name: 'Storage', description: '1TB NVMe SSD + 120GB NVMe SSD' }
     ];
 
+    const laptopSetup2 = [
+        { name: 'Model', description: 'Macbook Air 2022' },
+        { name: 'CPU/GPU', description: 'Apple M2' },
+        { name: 'RAM', description: '16 GB Unified Memory' },
+        { name: 'Storage', description: '512GB SSD' }
+    ];
+
     const serverSetup = [
         { name: 'CPU', description: 'AMD Ryzen 7 5700G' },
         { name: 'RAM', description: '48GB DDR4 3600MHz' },
@@ -99,9 +107,9 @@ const AboutPage: React.FC = () => {
     ];
 
     const cameraSetup = [
-        { name: 'Camera Body', description: 'Canon EOS M50m2' },
-        { name: 'Primary Lens', description: 'EF-M 15-45mm f/3.5-6.3 IS STM' },
-        { name: 'Portrait Lens', description: 'EF 50mm f/1.8 STM' },
+        { name: 'Body', description: 'Canon EOS R7' },
+        { name: 'Primary Lens', description: 'EF-S 18-135mm f/3.5-5.6 Nano USM' },
+        { name: 'Portrait Lens', description: 'RF 50mm f/1.8 STM' },
         { name: 'Telephoto', description: 'EF-S 55-250mm f/4-5.6 IS STM' }
     ];
 
@@ -360,6 +368,29 @@ const AboutPage: React.FC = () => {
                             <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/20 dark:border-neutral-700/50">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {laptopSetup.map((item, index) => (
+                                        <div key={index} className="flex">
+                                            <span className="font-semibold text-neutral-800 dark:text-white min-w-[100px]">{item.name}:</span>
+                                            <span className="text-neutral-700 dark:text-gray-300">{item.description}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Laptop Setup */}
+                        <motion.div
+                            className="mb-10"
+                            variants={fadeIn}
+                        >
+                            <div className="flex items-center mb-4">
+                                <div className="w-10 h-10 bg-gray-500 rounded-lg flex items-center justify-center text-white text-xl mr-3">
+                                    <FaLaptopCode />
+                                </div>
+                                <h3 className="text-2xl font-bold text-neutral-800 dark:text-white">Laptop Setup 2</h3>
+                            </div>
+                            <div className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md p-6 rounded-xl shadow-lg border border-white/20 dark:border-neutral-700/50">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {laptopSetup2.map((item, index) => (
                                         <div key={index} className="flex">
                                             <span className="font-semibold text-neutral-800 dark:text-white min-w-[100px]">{item.name}:</span>
                                             <span className="text-neutral-700 dark:text-gray-300">{item.description}</span>

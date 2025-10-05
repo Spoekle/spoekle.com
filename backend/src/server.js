@@ -70,6 +70,7 @@ const portfolioRoute = require('./routes/Portfolio');
 const storageRoutes = require('./routes/storage/StorageRoutes');
 const cdnRoute = require('./routes/CdnRoute');
 const dbAdminRoute = require('./routes/DbAdmin');
+const contactRoute = require('./routes/Contact');
 
 let photoRoute;
 let photoFilesRoute;
@@ -94,6 +95,7 @@ app.use('/api/storage', storageRoutes);
 app.use('/api/photos', photoRoute);
 app.use('/api/photo-files', photoFilesRoute);
 app.use('/api/db-admin', dbAdminRoute);
+app.use('/api/contact', contactRoute);
 app.use('/', cdnRoute);
 
 // Global error handler

@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import axios from 'axios';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import NotificationContainer from './components/NotificationContainer';
+import { NotificationProvider } from './context/NotificationContext';
 import AuthenticationLayout from './layouts/AuthenticationLayout';
 
 // Import blog-related components
@@ -11,6 +13,7 @@ import Admin from './pages/Admin/Index';
 import Blog from './pages/Blog/Index';
 import BlogPost from './pages/Blog/BlogPost';
 import BlogEditor from './pages/Blog/BlogEditor';
+import Contact from './pages/Contact/Index';
 import Games from './pages/Games/Index';
 import Home from './pages/Home/Index';
 import Login from './pages/Login/Index';
@@ -113,6 +116,7 @@ function App() {
   };
 
   return (
+    <NotificationProvider>
       <Router>
         <div className="flex flex-col min-h-screen relative bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-white transition duration-200">
           <Navbar user={user} setUser={setUser} />
@@ -120,6 +124,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path='/contact' element={<Contact />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/portfolio/new" element={<RequireAuth isAdminRequired={true}><PortfolioEditor /></RequireAuth>} />
               <Route path="/portfolio/edit/:id" element={<RequireAuth isAdminRequired={true}><PortfolioEditor /></RequireAuth>} />
@@ -143,8 +148,10 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <NotificationContainer />
         </div>
       </Router>
+    </NotificationProvider>
   );
 }
 

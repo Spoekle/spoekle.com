@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaServer, FaDiscord, FaGlobe, FaLock, FaUsers, FaInfoCircle, FaMap } from 'react-icons/fa';
+import { FaServer, FaGlobe, FaLock, FaInfoCircle, FaMap } from 'react-icons/fa';
 import { SiBlockbench } from 'react-icons/si';
 
 // Import images
@@ -110,17 +110,6 @@ const Minecraft: React.FC = () => {
                 className="mt-8 flex flex-wrap gap-4"
                 variants={fadeIn}
               >
-                <motion.a
-                  href="https://discord.gg/Ha9ruZcmhE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <FaDiscord />
-                  <span className="font-medium">Join Discord</span>
-                </motion.a>
                 <motion.a
                   href="https://minecraft.net"
                   target="_blank"
@@ -341,88 +330,7 @@ const Minecraft: React.FC = () => {
                 Server Specs <FaServer className="ml-2" />
               </motion.a>
             </motion.div>
-            
-            <motion.div
-              className="backdrop-blur-md bg-white/40 dark:bg-white/5 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg transition duration-200"
-              {...useAlwaysInView}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-            >
-              <div className="w-14 h-14 rounded-full bg-purple-500 flex items-center justify-center mb-6">
-                <FaUsers className="text-white text-2xl" />
-              </div>
-              <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-3">Community Events</h3>
-              <p className="text-neutral-700 dark:text-gray-300 mb-4">
-                Regular community events including building competitions, treasure hunts, PvP tournaments, and collaborative projects to bring players together.
-              </p>
-              <motion.a
-                href="https://discord.gg/Ha9ruZcmhE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-purple-600 dark:text-purple-400 font-medium hover:underline"
-                whileHover={{ x: 5 }}
-              >
-                Join Discord for Events <FaDiscord className="ml-2" />
-              </motion.a>
-            </motion.div>
           </div>
-        </div>
-      </section>
-      
-      {/* Community & Discord Section */}
-      <section className="mt-4 py-16 bg-indigo-100/50 dark:bg-indigo-950/30 backdrop-blur-lg rounded-xl overflow-hidden transition duration-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="flex flex-col items-center text-center"
-            {...useAlwaysInView}
-          >
-            <motion.div
-              className="w-20 h-20 rounded-full bg-indigo-500 dark:bg-indigo-600 flex items-center justify-center mb-6 transition duration-200"
-              variants={fadeIn}
-              whileHover={{ scale: 1.1, rotate: 10 }}
-            >
-              <FaDiscord size={40} className="text-white" />
-            </motion.div>
-            <motion.h2
-              className="text-3xl font-bold text-neutral-800 dark:text-white mb-4 transition duration-200"
-              variants={fadeIn}
-            >
-              Join Our Minecraft Community
-            </motion.h2>
-            <motion.p
-              className="text-xl text-neutral-700 dark:text-gray-300 max-w-2xl mb-8 transition duration-200"
-              variants={fadeIn}
-            >
-              Connect with other players, get server announcements, and participate in community events
-            </motion.p>
-            <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto w-full mb-8">
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
-                <h3 className="text-lg font-bold text-neutral-800 dark:text-white mb-2">Server Announcements</h3>
-                <p className="text-neutral-700 dark:text-gray-300">Stay updated with the latest server news, updates, and maintenance schedules</p>
-              </div>
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
-                <h3 className="text-lg font-bold text-neutral-800 dark:text-white mb-2">Community Chat</h3>
-                <p className="text-neutral-700 dark:text-gray-300">Connect with other players, share your builds, and make new friends</p>
-              </div>
-              <div className="bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
-                <h3 className="text-lg font-bold text-neutral-800 dark:text-white mb-2">Server Support</h3>
-                <p className="text-neutral-700 dark:text-gray-300">Get help with server issues, mod installation, and gameplay questions</p>
-              </div>
-            </motion.div>
-            <motion.a
-              href="https://discord.gg/Ha9ruZcmhE"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-600 dark:to-purple-600 text-white font-medium 
-                      shadow-lg shadow-indigo-500/30 dark:shadow-indigo-600/30 hover:shadow-indigo-500/50 dark:hover:shadow-indigo-600/50 transition duration-300 
-                      transform hover:scale-105 hover:-translate-y-1"
-              variants={fadeIn}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Join Discord Server
-            </motion.a>
-          </motion.div>
         </div>
       </section>
     </>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaDiscord, FaYoutube, FaGithub, FaCode, FaGamepad, FaTwitch, FaArrowRight } from 'react-icons/fa';
+import { FaYoutube, FaGithub, FaCode, FaGamepad, FaTwitch, FaArrowRight } from 'react-icons/fa';
 import { BiLinkExternal } from 'react-icons/bi';
 import { MdOutlinePhotoCamera } from 'react-icons/md';
 import DefaultLayout from '../../layouts/DefaultLayout';
@@ -13,14 +13,6 @@ import minecraftImg from '../../assets/minecraft.webp';
 import beatSaberImg from '../../assets/beat-saber-5.jpg';
 
 // Animation variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 }
-  }
-};
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -30 },
@@ -302,49 +294,6 @@ const HomePage = () => {
                 </div>
               </motion.div>
             </div>
-          </div>
-        </section>
-
-        {/* Discord Link Section */}
-        <section className="mt-4 py-16 bg-indigo-100/50 dark:bg-indigo-950/30 backdrop-blur-lg rounded-xl overflow-hidden transition duration-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              className="flex flex-col items-center text-center"
-              {...useAlwaysInView}
-            >
-              <motion.div
-                className="w-20 h-20 rounded-full bg-indigo-500 dark:bg-indigo-600 flex items-center justify-center mb-6 transition duration-200"
-                variants={fadeIn}
-                whileHover={{ scale: 1.1, rotate: 10 }}
-              >
-                <FaDiscord size={40} className="text-white" />
-              </motion.div>
-              <motion.h2
-                className="text-3xl font-bold text-neutral-800 dark:text-white mb-4 transition duration-200"
-                variants={fadeIn}
-              >
-                Join My Discord Community
-              </motion.h2>
-              <motion.p
-                className="text-xl text-neutral-700 dark:text-gray-300 max-w-2xl mb-8 transition duration-200"
-                variants={fadeIn}
-              >
-                Connect with me and other fans to chat, get updates, and hang out!
-              </motion.p>
-              <motion.a
-                href="https://discord.gg/Ha9ruZcmhE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 dark:from-indigo-600 dark:to-purple-600 text-white font-medium 
-                        shadow-lg shadow-indigo-500/30 dark:shadow-indigo-600/30 hover:shadow-indigo-500/50 dark:hover:shadow-indigo-600/50 transition duration-300 
-                        transform hover:scale-105 hover:-translate-y-1"
-                variants={fadeIn}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Join Discord Server
-              </motion.a>
-            </motion.div>
           </div>
         </section>
       </DefaultLayout>

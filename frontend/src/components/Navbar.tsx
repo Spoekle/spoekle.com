@@ -178,6 +178,9 @@ const Navbar: React.FC<NavbarProps> = ({ user, setUser }) => {
             <NavLink to="/portfolio" className={({isActive}) => `px-3 py-2 rounded-lg font-medium transition-colors ${isActive ? 'bg-white/20 dark:bg-neutral-800/30 text-purple-600 dark:text-purple-400' : 'hover:bg-white/10 dark:hover:bg-neutral-800/20'}`}>
               Portfolio
             </NavLink>
+            <NavLink to="/contact" className={({isActive}) => `px-3 py-2 rounded-lg font-medium transition-colors ${isActive ? 'bg-white/20 dark:bg-neutral-800/30 text-purple-600 dark:text-purple-400' : 'hover:bg-white/10 dark:hover:bg-neutral-800/20'}`}>
+              Contact
+            </NavLink>
           </div>
           
           {/* Right Side - Search & Auth */}
@@ -281,6 +284,13 @@ const Navbar: React.FC<NavbarProps> = ({ user, setUser }) => {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Portfolio
+                </NavLink>
+                <NavLink 
+                  to="/contact" 
+                  className="flex items-center py-2 px-3 rounded-lg hover:bg-white/30 dark:hover:bg-neutral-700/30 transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Contact
                 </NavLink>
                 
                 {/* Search Form */}

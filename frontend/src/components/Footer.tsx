@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaDiscord, FaGithub, FaYoutube, FaSun, FaMoon, FaSnowflake, FaTiktok, FaLinkedin, FaTwitch } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaSun, FaMoon, FaSnowflake, FaTiktok, FaLinkedin, FaTwitch } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 function Footer() {
@@ -85,8 +85,8 @@ function Footer() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-purple-400/5 dark:bg-purple-900/10 rounded-full blur-3xl opacity-60 animate-pulse-slow" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-indigo-400/5 dark:bg-indigo-900/10 rounded-full blur-2xl opacity-50 animate-pulse-slow" />
       </div>
-      <div className="z-10 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 py-8 backdrop-blur-sm bg-white/5 dark:bg-black/5 rounded-lg border border-white/10 dark:border-neutral-700/30 shadow-xl mb-6">
+      <div className="z-10 container mx-auto px-">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 backdrop-blur-sm bg-white/5 dark:bg-black/5 rounded-2xl border border-white/10 dark:border-neutral-700/30 shadow-xl mb-6">
           {/* Logo and description */}
           <div className="flex flex-col items-center md:items-start">
             <Link to="/" className="flex items-center space-x-2 mb-3 group">
@@ -111,6 +111,11 @@ function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/contact" className="text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200">
+                  Contact
+                </Link>
+              </li>
+              <li>
                 <Link to="/privacystatement" className="text-neutral-600 dark:text-neutral-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition duration-200">
                   Privacy Statement
                 </Link>
@@ -132,17 +137,6 @@ function Footer() {
           <div className="flex flex-col items-center md:items-end">
             <h3 className="text-lg font-semibold mb-3 text-neutral-800 dark:text-white">Connect With Me</h3>
             <div className="flex space-x-4 mb-4">
-              <motion.a
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://discord.gg/dwe8mbC"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-full bg-white/10 dark:bg-white/5 border border-white/10 dark:border-white/5 text-neutral-600 dark:text-neutral-400 hover:text-indigo-500 transition-colors shadow-md"
-                aria-label="Discord"
-              >
-                <FaDiscord size={20} />
-              </motion.a>
               <motion.a
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.95 }}

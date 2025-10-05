@@ -52,7 +52,7 @@ function PrivacyStatement() {
                 'Correction: The right to correct any inaccurate personal information we have about you.',
                 'Deletion: The right to request the deletion of your personal information.'
             ],
-            extraContent: 'To exercise these rights, please contact us via the official Cube Community Discord Server.'
+            extraContent: 'To exercise these rights, please contact me on'
         },
         {
             id: 'changes',
@@ -65,7 +65,7 @@ function PrivacyStatement() {
     return (
       <DefaultLayout
         title="Privacy Statement"
-        subtitle="Your privacy matters to us"
+        subtitle="Your privacy matters to me"
         backgroundImage={spoekleGame}
         metaDescription="ClipSesh privacy statement - Learn how we protect your data and maintain your privacy while using our service."
       >
@@ -118,12 +118,12 @@ function PrivacyStatement() {
                     {section.extraContent}
                     {section.id === 'rights' && (
                         <a 
-                            href='https://discord.gg/dwe8mbC' 
+                            href='https://discord.com/channels/@me/435825557087977492' 
                             className='ml-1 text-blue-600 dark:text-blue-400 hover:underline font-medium inline-flex items-center'
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Spoekle Discord Server
+                            Discord
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -137,14 +137,14 @@ function PrivacyStatement() {
           
           <div className="mt-10 p-4 bg-neutral-200 dark:bg-neutral-700 rounded-lg text-center">
             <p className="text-neutral-700 dark:text-neutral-300">
-              If you have any questions about this Privacy Policy, please contact me in the
+              If you have any questions about this Privacy Policy, please contact me on 
               <a 
-                href='https://discord.gg/dwe8mbC' 
+                href='https://discord.com/channels/@me/435825557087977492' 
                 className='mx-1 text-blue-600 dark:text-blue-400 hover:underline font-medium'
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Spoekle Discord Server
+                Discord
               </a>
               .
             </p>

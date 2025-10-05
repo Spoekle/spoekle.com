@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGamepad, FaSteam, FaDiscord, FaTwitch, FaArrowRight } from 'react-icons/fa';
+import { FaGamepad, FaSteam, FaTwitch, FaArrowRight } from 'react-icons/fa';
 import { SiUnity, SiBlockbench, SiEpicgames } from 'react-icons/si';
 import { useLocation, useNavigate } from 'react-router-dom';
 import DefaultLayout from '../../layouts/DefaultLayout';
@@ -241,34 +241,6 @@ const GamesPage: React.FC = () => {
                       <FaTwitch />
                     </div>
                     <h3 className="text-lg font-medium text-neutral-800 dark:text-white">Twitch</h3>
-                  </motion.a>
-                  <motion.a
-                    href="https://discord.gg/Ha9ruZcmhE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-white/10 shadow-lg flex flex-col items-center text-center"
-                    whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-                  >
-                    <div className="text-4xl mb-3 text-indigo-500">
-                      <FaDiscord />
-                    </div>
-                    <h3 className="text-lg font-medium text-neutral-800 dark:text-white">Discord</h3>
-                  </motion.a>
-                </div>
-                
-                <div className="mt-6 bg-white/40 dark:bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
-                  <h3 className="text-xl font-semibold text-neutral-800 dark:text-white mb-4">Game Servers</h3>
-                  <p className="text-neutral-700 dark:text-gray-300 mb-4">
-                    I host several game servers for my community, including Minecraft, Terraria, and others. Join my Discord to get access!
-                  </p>
-                  <motion.a
-                    href="https://discord.gg/Ha9ruZcmhE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-indigo-600 dark:text-indigo-400 font-medium hover:underline"
-                    whileHover={{ x: 5 }}
-                  >
-                    Join Discord <FaDiscord className="ml-2" />
                   </motion.a>
                 </div>
               </motion.div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaDownload, FaTwitch, FaYoutube, FaDiscord, FaCog, FaInfoCircle, FaQuestionCircle } from 'react-icons/fa';
+import { FaTwitch, FaYoutube, FaCog, FaInfoCircle } from 'react-icons/fa';
 import { SiSteam, SiOculus } from 'react-icons/si';
 
 // Animation variants
@@ -27,23 +27,15 @@ const staggerChildren = {
 const useAlwaysInView = {
   initial: "hidden",
   animate: "visible", 
-  // Fallback for components that need whileInView
   whileInView: "visible",
   viewport: { once: true, amount: 0.1 }
 };
 
 const BeatSaber: React.FC = () => {
-  const mods = [
-    { name: "SongCore", description: "Allows downloading custom Beat Saber songs" },
-    { name: "JD Fixer", description: "Change the Jump Distance based on the song" },
-    { name: "Mapping Extensions", description: "Enables additional mapping capabilities" },
-    { name: "Chroma", description: "Adds RGB lighting effects to maps" },
-    { name: "Noodle Extensions", description: "Enables advanced mapping techniques" }
-  ];
-
   const settings = {
     Graphics: [
       { setting: "Anti-Aliasing", value: "Off" },
+      { setting: "Render Scale", value: "100%" },
       { setting: "Bloom", value: "On" },
       { setting: "Mirror Quality", value: "High" },
       { setting: "Smoke", value: "On" },
@@ -53,8 +45,11 @@ const BeatSaber: React.FC = () => {
       { setting: "Static Lights", value: "On" },
       { setting: "Reduce Debris", value: "On" },
       { setting: "Advanced HUD", value: "On" },
-      { setting: "Player Height", value: "0.1m under default" },
-      { setting: "Room Rotation", value: "0°" }
+      { setting: "Player Height", value: "0.1m under default" }
+    ],
+    Config: [
+      { name: "Saber Offsets", download: "SpoekleQuest3Offsets.json" },
+      { name: "HSV", download: "SpoekleHSV.json" }
     ]
   };
 
@@ -140,13 +135,13 @@ const BeatSaber: React.FC = () => {
               className="text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white mb-4"
               variants={fadeIn}
             >
-              My Setup & Settings
+              My Settings
             </motion.h2>
             <motion.p
               className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
               variants={fadeIn}
             >
-              Optimize your Beat Saber experience with my recommended settings
+              These are the settings I use for Beat Saber :D
             </motion.p>
           </motion.div>
           
@@ -196,102 +191,33 @@ const BeatSaber: React.FC = () => {
                 ))}
               </div>
             </motion.div>
-          </div>
-          
-          <motion.div
-            className="mt-8 backdrop-blur-md bg-white/40 dark:bg-white/5 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg transition duration-200"
-            {...useAlwaysInView}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-6 flex items-center">
-              <FaQuestionCircle className="mr-2 text-blue-600 dark:text-blue-400" />
-              Controller Settings & Tips
-            </h3>
-            
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-neutral-700 dark:text-gray-300">
-                For optimal play, I recommend the following controller settings:
-              </p>
-              <ul className="list-disc pl-5 text-neutral-700 dark:text-gray-300">
-                <li>Set the controller position offset slightly forward (Z-axis: +2cm)</li>
-                <li>Adjust the rotation to match your natural swing style</li>
-                <li>Enable "static lights" for better performance on demanding maps</li>
-                <li>Lower the floor height slightly for better reach on low notes</li>
-              </ul>
-              
-              <div className="mt-6 bg-blue-100/50 dark:bg-blue-900/20 p-4 rounded-lg">
-                <p className="text-blue-800 dark:text-blue-300 font-medium">
-                  Pro Tip: When playing fast maps, focus on wrist movements rather than full arm swings to reduce fatigue and increase speed!
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-      
-      {/* Recommended Mods Section */}
-      <section className="mt-4 py-16 md:py-20 bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30 rounded-xl overflow-hidden transition duration-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="text-center mb-12"
-            {...useAlwaysInView}
-          >
+
             <motion.div
-              className="inline-block p-3 rounded-full bg-purple-100 dark:bg-purple-900/30 mb-4"
-              variants={fadeIn}
+              className="backdrop-blur-md bg-white/40 dark:bg-white/5 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg transition duration-200"
+              {...useAlwaysInView}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <FaDownload className="text-3xl text-purple-600 dark:text-purple-400" />
+              <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-6 flex items-center">
+                <FaInfoCircle className="mr-2 text-blue-600 dark:text-blue-400" />
+                Configs
+              </h3>
+              <p className="text-neutral-700 dark:text-gray-300 mb-4">
+                I use the following configs for my Beat Saber setup:
+              </p>
+              <div className="space-y-4">
+                {settings.Config.map((item, index) => (
+                  <div 
+                    key={`config-${index}`}
+                    className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-neutral-700"
+                  >
+                    <a href={`/download/${item.download}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 font-medium">
+                      {item.name}
+                    </a>
+                  </div>
+                ))}
+              </div>
             </motion.div>
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold text-neutral-800 dark:text-white mb-4"
-              variants={fadeIn}
-            >
-              Recommended Mods
-            </motion.h2>
-            <motion.p
-              className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
-              variants={fadeIn}
-            >
-              Enhance your Beat Saber experience with these awesome mods
-            </motion.p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mods.map((mod, index) => (
-              <motion.div
-                key={mod.name}
-                className="backdrop-blur-md bg-white/40 dark:bg-white/5 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg transition duration-200"
-                {...useAlwaysInView}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-              >
-                <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-2">{mod.name}</h3>
-                <p className="text-neutral-700 dark:text-gray-300">{mod.description}</p>
-              </motion.div>
-            ))}
           </div>
-          
-          <motion.div
-            className="text-center mt-10"
-            {...useAlwaysInView}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <p className="text-neutral-700 dark:text-gray-300 mb-6">
-              To install mods, I recommend using BSManager, which simplifies the entire process. It also allows you to download different versions of the game.
-            </p>
-            <motion.a
-              href="https://www.bsmanager.io/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 dark:from-purple-600 dark:to-indigo-600 text-white font-medium 
-                    shadow-lg shadow-purple-500/30 dark:shadow-purple-600/30 hover:shadow-purple-500/50 dark:hover:shadow-purple-600/50 transition duration-300 
-                    transform hover:scale-105 hover:-translate-y-1 inline-block"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Go to BSManager
-            </motion.a>
-          </motion.div>
         </div>
       </section>
       
@@ -353,22 +279,6 @@ const BeatSaber: React.FC = () => {
               </div>
               <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-2">YouTube Videos</h3>
               <p className="text-neutral-700 dark:text-gray-300">Check out my Beat Saber gameplay on YouTube.</p>
-            </motion.a>
-            
-            <motion.a
-              href="https://discord.gg/Ha9ruZcmhE"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="backdrop-blur-md bg-white/40 dark:bg-white/5 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg transition duration-200 flex flex-col items-center text-center"
-              {...useAlwaysInView}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-            >
-              <div className="w-16 h-16 rounded-full bg-indigo-500 flex items-center justify-center mb-4">
-                <FaDiscord className="text-white text-2xl" />
-              </div>
-              <h3 className="text-xl font-bold text-neutral-800 dark:text-white mb-2">Discord Community</h3>
-              <p className="text-neutral-700 dark:text-gray-300">Join my Discord to share maps, discuss strategies, and connect with other players.</p>
             </motion.a>
           </div>
         </div>
