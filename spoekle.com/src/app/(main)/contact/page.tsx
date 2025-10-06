@@ -1,0 +1,305 @@
+'use client';
+
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaPaperPlane, FaEnvelope, FaUser, FaTag } from 'react-icons/fa';
+import { MdMessage } from 'react-icons/md';
+import { useNotification } from '@/context/NotificationContext';
+import DefaultLayout from '@/components/DefaultLayout';
+
+// Animation variants
+const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6 }
+    }
+};
+
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2
+        }
+    }
+};
+
+const useAlwaysInView = {
+  initial: "hidden",
+  animate: "visible", 
+  whileInView: "visible",
+  viewport: { once: true, amount: 0.1 }
+};
+
+interface ContactForm {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+}
+
+export default function ContactPage() {
+  const [form, setForm] = useState<ContactForm>({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { showSuccess, showError } = useNotification();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm(prev => ({
+        ...prev,
+        [name]: value
+    }));
+  };
+
+  const validateForm = (): string[] => {
+    const errors: string[] = [];
+    
+    if (!form.name.trim() || form.name.trim().length < 2) {
+        errors.push('Name must be at least 2 characters long');
+    }
+    
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+        errors.push('Please provide a valid email address');
+    }
+    
+    if (!form.subject.trim() || form.subject.trim().length < 5) {
+        errors.push('Subject must be at least 5 characters long');
+    }
+    
+    if (!form.message.trim() || form.message.trim().length < 10) {
+        errors.push('Message must be at least 10 characters long');
+    }
+    
+    return errors;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate form
+    const validationErrors = validateForm();
+    if (validationErrors.length > 0) {
+        validationErrors.forEach(error => showError(error));
+        return;
+    }
+    
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      showSuccess('Thank you for your message! I\'ll get back to you as soon as possible.');
+      setForm({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error sending message:', error);
+      showError('Failed to send message. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <DefaultLayout
+      title="Contact Me"
+      subtitle="Let's work together"
+      backgroundImage="/assets/spoekle.webp"
+    >
+      {/* Intro Section */}
+      <section className="py-16 bg-neutral-100 dark:bg-neutral-900/50 rounded-xl shadow-lg mb-12">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            {...useAlwaysInView}
+            variants={staggerContainer}
+          >
+            <motion.h2
+              className="text-3xl font-bold text-neutral-800 dark:text-white mb-8 inline-block border-b-4 border-purple-500 pb-2"
+              variants={fadeIn}
+            >
+              Get In Touch
+            </motion.h2>
+
+            <motion.div className="prose prose-lg dark:prose-invert max-w-none" variants={fadeIn}>
+              <p className="text-neutral-700 dark:text-gray-300 mb-4">
+                Whether you have a project in mind, a question, or just want to say hello, I'd love to hear from you!
+                Fill out the form below and I'll get back to you as soon as possible.
+              </p>
+
+              <p className="text-neutral-700 dark:text-gray-300">
+                Please note that due to the volume of messages I receive, it may take me a few days to respond.
+                I appreciate your patience and will do my best to get back to you promptly!
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="py-16 bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-950/30 dark:to-indigo-950/30 rounded-xl shadow-lg mb-12">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            {...useAlwaysInView}
+            variants={staggerContainer}
+          >
+            <motion.h2
+              className="text-3xl font-bold text-neutral-800 dark:text-white mb-8 inline-block border-b-4 border-indigo-500 pb-2"
+              variants={fadeIn}
+            >
+              Send Me a Message
+            </motion.h2>
+
+            <motion.div
+              className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md rounded-2xl shadow-xl border border-white/20 dark:border-neutral-700/50 p-8"
+              variants={fadeIn}
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Your Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 pl-11 bg-white dark:bg-neutral-700 border-2 border-neutral-300 dark:border-neutral-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-neutral-900 dark:text-white"
+                      placeholder="John Doe"
+                    />
+                    <FaUser className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Your Email
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 pl-11 bg-white dark:bg-neutral-700 border-2 border-neutral-300 dark:border-neutral-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-neutral-900 dark:text-white"
+                      placeholder="john@example.com"
+                    />
+                    <FaEnvelope className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Subject
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={form.subject}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 pl-11 bg-white dark:bg-neutral-700 border-2 border-neutral-300 dark:border-neutral-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-neutral-900 dark:text-white"
+                      placeholder="What's this about?"
+                    />
+                    <FaTag className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">
+                    Your Message
+                  </label>
+                  <div className="relative">
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleInputChange}
+                      rows={6}
+                      className="w-full px-4 py-3 pl-11 bg-white dark:bg-neutral-700 border-2 border-neutral-300 dark:border-neutral-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-neutral-900 dark:text-white resize-none"
+                      placeholder="Tell me about your project or question..."
+                    />
+                    <MdMessage className="absolute left-3.5 top-4 text-neutral-400" />
+                  </div>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className="w-full flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white text-lg font-semibold rounded-xl shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="mr-3" />
+                      Send Message
+                    </>
+                  )}
+                </motion.button>
+              </form>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Other Ways to Connect Section */}
+      <section className="py-16 bg-neutral-100 dark:bg-neutral-900/50 rounded-xl shadow-lg">
+        <div className="container mx-auto px-4 md:px-8">
+          <motion.div
+            className="max-w-4xl mx-auto text-center"
+            {...useAlwaysInView}
+            variants={staggerContainer}
+          >
+            <motion.h2
+              className="text-3xl font-bold text-neutral-800 dark:text-white mb-8 inline-block border-b-4 border-cyan-500 pb-2"
+              variants={fadeIn}
+            >
+              Other Ways to Connect
+            </motion.h2>
+
+            <motion.div className="prose prose-lg dark:prose-invert max-w-none" variants={fadeIn}>
+              <p className="text-neutral-700 dark:text-gray-300 mb-4">
+                Prefer to connect on social media? You can find me on various platforms where I share updates,
+                content, and interact with the community. Feel free to reach out through any of these channels!
+              </p>
+
+              <p className="text-neutral-700 dark:text-gray-300">
+                I'm most active on Discord, TikTok, and GitHub, so those are your best bets for a quicker response!
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+    </DefaultLayout>
+  );
+}
