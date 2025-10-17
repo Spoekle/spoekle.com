@@ -149,8 +149,8 @@ export async function POST(request: NextRequest) {
     const photo = new Photo({
       title,
       description,
-      imageUrl: `/uploads/photos/${filename}`,
-      thumbnailUrl: `/uploads/thumbnails/${thumbnailFilename}`,
+      imageUrl: `/api/uploads/photos/${filename}`,
+      thumbnailUrl: `/api/uploads/thumbnails/${thumbnailFilename}`,
       category,
       metadata: photoMetadata,
       userId: user.id,

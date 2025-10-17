@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     const filepath = path.join(uploadsDir, filename);
     await writeFile(filepath, buffer);
 
-    const imageUrl = `/uploads/blog/${filename}`;
+    const imageUrl = `/api/uploads/blog/${filename}`;
 
     return successResponse({
       imageUrl,

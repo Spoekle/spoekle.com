@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
     await writeFile(filepath, buffer);
 
     // Return public URL
-    const imageUrl = `/uploads/games/${filename}`;
+    const imageUrl = `/api/uploads/games/${filename}`;
 
     return NextResponse.json({
       success: true,

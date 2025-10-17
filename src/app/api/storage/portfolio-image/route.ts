@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       throw new Error(`Failed to save file: ${writeError instanceof Error ? writeError.message : 'Unknown error'}`);
     }
 
-    const imageUrl = `/uploads/portfolio/${filename}`;
+    const imageUrl = `/api/uploads/portfolio/${filename}`;
 
     return successResponse({
       imageUrl,
