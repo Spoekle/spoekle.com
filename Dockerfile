@@ -39,11 +39,15 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Create uploads directories with proper permissions
+RUN mkdir -p ./public/uploads/blog ./public/uploads/portfolio ./public/uploads/photos && \
+    chown -R nextjs:nodejs ./public/uploads
 
 USER nextjs
 

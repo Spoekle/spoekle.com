@@ -39,13 +39,19 @@ export async function POST(request: NextRequest) {
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'portfolio');
     try {
       await mkdir(uploadsDir, { recursive: true });
-    } catch (error) {
-      // Directory might already exist
+    } catch (mkdirError) {
+      console.error('Failed to create uploads directory:', mkdirError);
+      // Continue anyway, directory might already exist
     }
 
     // Save file
     const filepath = path.join(uploadsDir, filename);
-    await writeFile(filepath, buffer);
+    try {
+      await writeFile(filepath, buffer);
+    } catch (writeError) {
+      console.error('Failed to write file:', writeError);
+      throw new Error(`Failed to save file: ${writeError instanceof Error ? writeError.message : 'Unknown error'}`);
+    }
 
     const imageUrl = `/uploads/portfolio/${filename}`;
 
