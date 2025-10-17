@@ -9,12 +9,17 @@ const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const DISCORD_REDIRECT_URI = process.env.DISCORD_REDIRECT_URI || 'http://localhost:3000/api/auth/discord/callback';
 
 export async function GET(request: NextRequest) {
+  // Get proper host for redirects
+  const protocol = request.headers.get('x-forwarded-proto') || 'http';
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'localhost:3000';
+  const baseUrl = `${protocol}://${host}`;
+
   try {
     const { searchParams } = new URL(request.url);
     const code = searchParams.get('code');
 
     if (!code) {
-      return NextResponse.redirect(new URL('/login?error=no_code', request.url));
+      return NextResponse.redirect(new URL('/login?error=no_code', baseUrl));
     }
 
     // Exchange code for access token
@@ -85,7 +90,7 @@ export async function GET(request: NextRequest) {
     // Check if user is approved
     if (!user.isApproved) {
       return NextResponse.redirect(
-        new URL('/login?error=pending_approval', request.url)
+        new URL('/login?error=pending_approval', baseUrl)
       );
     }
 
@@ -97,13 +102,13 @@ export async function GET(request: NextRequest) {
     });
 
     // Redirect to home with token
-    const redirectUrl = new URL('/', request.url);
+    const redirectUrl = new URL('/', baseUrl);
     redirectUrl.searchParams.set('token', token);
     return NextResponse.redirect(redirectUrl);
   } catch (error: any) {
     console.error('Discord OAuth error:', error.response?.data || error.message);
     return NextResponse.redirect(
-      new URL('/login?error=discord_auth_failed', request.url)
+      new URL('/login?error=discord_auth_failed', baseUrl)
     );
   }
 }
