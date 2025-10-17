@@ -1,0 +1,31 @@
+# MongoDB Connection
+MONGODB_URI=mongodb://mongo:27017/database-name
+
+# JWT Secret
+SECRET_KEY=your-secret-key-here
+
+# Admin Credentials
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your-admin-password
+
+# Discord OAuth2
+DISCORD_CLIENT_ID=your-discord-client-id
+DISCORD_CLIENT_SECRET=your-discord-client-secret
+DISCORD_REDIRECT_URI=http://localhost:3000/api/auth/discord/callback
+
+# Email Configuration (Nodemailer/SMTP)
+SMTP_HOST=smtp.host.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your.email@domain.com
+SMTP_PASS=your-email-password
+SMTP_FROM=noreply@domain.com
+CONTACT_EMAIL=your.email@domain.com
+
+# Next.js
+NEXT_PUBLIC_API_URL=http://localhost:3000
+
+# GitHub API (Optional - for enhanced rate limits on language stats)
+# Generate a personal access token at: https://github.com/settings/tokens
+# No special permissions needed for public repo access
+GITHUB_TOKEN=your-github-personal-access-token
