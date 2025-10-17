@@ -6,7 +6,7 @@ import { successResponse, errorResponse } from '@/lib/apiResponse';
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const currentUser = requireAuth(request);
@@ -16,8 +16,10 @@ export async function PATCH(
     
     await dbConnect();
 
+    const { id } = await params;
+
     const updatedUser = await User.findByIdAndUpdate(
-      params.id,
+      id,
       { isApproved: true },
       { new: true, runValidators: true }
     ).select('-password');

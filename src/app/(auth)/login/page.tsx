@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaUser, FaSpinner, FaDiscord, FaTimes, FaEnvelope, FaLock } from 'react-icons/fa';
 import { MdLogin } from 'react-icons/md';
@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useNotification } from '@/context/NotificationContext';
 import { cookieUtils } from '@/lib/cookies';
 
-export default function LoginPage() {
+function LoginPageContent() {
   const [formMode, setFormMode] = useState<'login' | 'register' | 'forgot-password'>('login');
   const [formData, setFormData] = useState({ username: '', password: '', email: '' });
   const [email, setEmail] = useState('');
@@ -410,5 +410,20 @@ export default function LoginPage() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center py-12 px-4">
+        <div className="text-center">
+          <FaSpinner className="animate-spin text-4xl mx-auto mb-4" />
+          <p>Loading...</p>
+        </div>
+      </div>
+    }>
+      <LoginPageContent />
+    </Suspense>
   );
 }

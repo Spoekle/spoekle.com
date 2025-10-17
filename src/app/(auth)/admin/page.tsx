@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaUsers, FaTrash, FaEdit, FaCheck, FaTimes, FaUserClock, FaDiscord, FaUserPlus, FaStar, FaEye, FaEyeSlash, FaDatabase, FaGamepad } from 'react-icons/fa';
@@ -63,7 +63,7 @@ interface GameItem {
 
 type TabType = 'users' | 'featured' | 'games' | 'database';
 
-export default function AdminPage() {
+function AdminPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, isAuthLoading } = useAuth();
@@ -1044,5 +1044,24 @@ export default function AdminPage() {
         )}
       </div>
     </DefaultLayout>
+  );
+}
+
+export default function AdminPage() {
+  return (
+    <Suspense fallback={
+      <DefaultLayout
+        title="Admin Dashboard"
+        subtitle="Manage the unmanaged..."
+        backgroundImage="/assets/admin.jpg"
+      >
+        <div className="container max-w-7xl px-4 py-12 flex flex-col items-center justify-center">
+          <h1 className="text-5xl font-bold mb-8 text-center">Loading Dashboard</h1>
+          <BiLoaderCircle className="animate-spin text-7xl" />
+        </div>
+      </DefaultLayout>
+    }>
+      <AdminPageContent />
+    </Suspense>
   );
 }
