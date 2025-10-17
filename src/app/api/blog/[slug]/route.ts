@@ -34,7 +34,8 @@ export async function GET(
         username: (post.authorId as any).username,
         profilePicture: (post.authorId as any).profilePicture,
       },
-      publishedDate: post.publishedDate,
+      publishedDate: post.createdAt,
+      updatedDate: post.updatedAt,
       tags: post.tags,
     };
 

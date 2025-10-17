@@ -20,6 +20,7 @@ interface BlogPost {
     profilePicture?: string;
   };
   publishedDate: string;
+  updatedDate: string;
   tags: string[];
 }
 
@@ -74,17 +75,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950">
-      {/* Back Button */}
-      <div className="container mx-auto px-4 pt-12">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 font-semibold text-lg mb-8 transition-colors"
-        >
-          <FaArrowLeft />
-          Back to Blog
-        </Link>
-      </div>
-
+      <div className="pt-28"/>
       {/* Featured Image */}
       {post.featuredImage && (
         <motion.div
@@ -97,12 +88,22 @@ export default function BlogPostPage() {
             src={post.featuredImage}
             alt={post.title}
             fill
-            className="object-cover"
+            className="object-cover "
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </motion.div>
       )}
+
+      <div className="container mx-auto px-4 max-w-7xl">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 font-semibold text-lg mb-8 transition-colors"
+        >
+          <FaArrowLeft />
+          Back to Blog
+        </Link>
+      </div>
 
       <div className="container mx-auto px-4 py-12">
         <article className="max-w-4xl mx-auto">
@@ -125,6 +126,7 @@ export default function BlogPostPage() {
               <div className="flex items-center gap-2">
                 <FaClock />
                 <span>{formatDate(post.publishedDate)}</span>
+                { post.publishedDate !== post.updatedDate && (<span> (Last updated: {formatDate(post.updatedDate)})</span>)}
               </div>
             </div>
 

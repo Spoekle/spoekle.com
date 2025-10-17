@@ -7,7 +7,6 @@ export interface IBlogPost extends Document {
   excerpt: string;
   slug: string;
   authorId: mongoose.Types.ObjectId;
-  publishedDate: Date;
   status: 'draft' | 'published';
   tags: string[];
   createdAt: Date;
@@ -26,7 +25,6 @@ const blogPostSchema = new Schema<IBlogPost>(
       ref: 'User',
       required: true,
     },
-    publishedDate: { type: Date, default: Date.now },
     status: { type: String, enum: ['draft', 'published'], default: 'published' },
     tags: [String],
   },

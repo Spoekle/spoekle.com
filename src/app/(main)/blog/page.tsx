@@ -22,6 +22,7 @@ interface BlogPost {
     profilePicture?: string;
   };
   publishedDate: string;
+  updatedDate: string;
   tags: string[];
 }
 

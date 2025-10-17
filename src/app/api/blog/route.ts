@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
 
     const posts = await BlogPost.find(query)
       .populate('authorId', 'username profilePicture')
-      .sort({ publishedDate: -1 })
+      .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
       .lean();
@@ -48,7 +48,8 @@ export async function GET(request: NextRequest) {
           username: author?.username || 'Unknown',
           profilePicture: author?.profilePicture,
         },
-        publishedDate: post.publishedDate,
+        publishedDate: post.createdAt,
+        updatedDate: post.updatedAt,
         tags: post.tags,
       };
     });
