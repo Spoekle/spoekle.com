@@ -19,8 +19,8 @@ const userSchema = new Schema<IUser>({
   email: { type: String, unique: true, sparse: true },
   password: { type: String, required: true },
   profilePicture: { 
-    type: String, 
-    default: 'https://api.spoekle.com/profilePictures/profile_placeholder.png' 
+    type: String,
+    default: '/assets/profile_placeholder.png' 
   },
   roles: { 
     type: [String], 
