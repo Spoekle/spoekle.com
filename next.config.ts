@@ -1,19 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ui-avatars.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'api.spoekle.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.spoekle.com',
       },
       {
         protocol: 'http',
@@ -28,25 +21,8 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     serverActions: {
-      bodySizeLimit: '10mb',
+      bodySizeLimit: '25mb',
     }
-  },
-  async rewrites() {
-    return [
-      // CDN rewrites - map cdn.spoekle.com to local API
-      {
-        source: '/cdn/:path*',
-        destination: '/api/cdn/:path*',
-      },
-      {
-        source: '/uploads/:path*',
-        destination: '/api/uploads/:path*',
-      },
-      {
-        source: '/profilePictures/:path*',
-        destination: '/api/profilePictures/:path*',
-      },
-    ];
   },
 };
 
