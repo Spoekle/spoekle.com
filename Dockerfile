@@ -45,9 +45,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Create uploads directories with proper permissions
-RUN mkdir -p ./public/uploads/blog ./public/uploads/portfolio ./public/uploads/photos && \
-    chown -R nextjs:nodejs ./public/uploads
+# Create uploads directories with proper permissions (before switching to nextjs user)
+RUN mkdir -p ./public/uploads/blog ./public/uploads/portfolio ./public/uploads/photos
+RUN chown -R nextjs:nodejs ./public/uploads
+RUN chmod -R 755 ./public/uploads
 
 USER nextjs
 
