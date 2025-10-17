@@ -1,4 +1,4 @@
-name: spoekle.com
+name: spoeklecom
 
 services:
   mongo:
