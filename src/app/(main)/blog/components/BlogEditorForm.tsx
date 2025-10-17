@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaSave, FaImage, FaTimes, FaArrowLeft, FaEye } from 'react-icons/fa';
+import { FaSave, FaImage, FaTimes, FaArrowLeft, FaEye, FaTrash } from 'react-icons/fa';
 import MDEditor from '@uiw/react-md-editor';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
@@ -43,6 +43,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
   const [tagInput, setTagInput] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState<string>('');
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState<boolean>(false);
 
   // Fetch post data if in edit mode
   useEffect(() => {
@@ -198,6 +199,36 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
     }
   };
 
+  const deletePost = async () => {
+    if (!isEditing || !post.slug) return;
+
+    try {
+      setLoading(true);
+      setError('');
+      const token = cookieUtils.get('token');
+      
+      await axios.delete(`/api/blog/${post.slug}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      setSuccess('Post deleted successfully');
+      
+      // Redirect after a short delay
+      setTimeout(() => {
+        router.push('/blog');
+      }, 1000);
+    } catch (error: any) {
+      const message = error.response?.data?.message || 'An error occurred while deleting the post';
+      setError(message);
+      console.error('Error deleting post:', error);
+    } finally {
+      setLoading(false);
+      setShowDeleteConfirm(false);
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -217,6 +248,39 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
         </div>
       )}
 
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white dark:bg-neutral-800 rounded-xl p-6 max-w-md w-full mx-4 shadow-xl"
+          >
+            <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
+              Delete Post?
+            </h3>
+            <p className="text-neutral-600 dark:text-neutral-300 mb-6">
+              Are you sure you want to delete "{post.title}"? This action cannot be undone.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                className="px-4 py-2 bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={deletePost}
+                disabled={loading}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors disabled:opacity-50"
+              >
+                {loading ? 'Deleting...' : 'Delete'}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
       {/* Top navigation bar */}
       <div className="flex justify-between items-center mb-6">
         <button 
@@ -227,6 +291,16 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
         </button>
         
         <div className="flex items-center gap-3">
+          {isEditing && (
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              disabled={loading}
+              className="flex items-center px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors disabled:opacity-50"
+            >
+              <FaTrash className="mr-2" /> Delete
+            </button>
+          )}
+          
           <button
             onClick={() => setPreviewMode(!previewMode)}
             className={`flex items-center px-3 py-1.5 rounded-lg ${
