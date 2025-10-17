@@ -377,7 +377,7 @@ export default function AdminPage() {
     try {
       const token = cookieUtils.get('token');
       await axios.patch(
-        `/api/games/${game.id}/toggle`,
+        `/api/games/${game.id}`,
         {},
         {
           headers: { 
