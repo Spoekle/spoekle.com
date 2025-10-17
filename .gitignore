@@ -11,7 +11,9 @@
 !.yarn/versions
 
 # storage
-/public/uploads/*
+/public/uploads/blog/*
+/public/uploads/portfolio/*
+/public/uploads/photos/*
 
 # testing
 /coverage

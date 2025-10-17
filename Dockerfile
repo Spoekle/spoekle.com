@@ -36,21 +36,14 @@ ENV NODE_ENV=production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder /app/public ./public
 
 # Automatically leverage output traces to reduce image size
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
-# Create uploads directories with proper permissions (before switching to nextjs user)
-RUN mkdir -p ./public/uploads/blog ./public/uploads/portfolio ./public/uploads/photos
-RUN chown -R nextjs:nodejs ./public/uploads
-RUN chmod -R 755 ./public/uploads
-
-USER nextjs
+# Create uploads directories
+RUN mkdir -p ./public/uploads/blog ./public/uploads/portfolio ./public/uploads/photos/thumbnails
 
 EXPOSE 3000
 
