@@ -5,10 +5,11 @@ import { stat } from 'fs/promises';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const filePath = join(process.cwd(), 'public', 'uploads', ...params.path);
+    const { path: pathSegments } = await params;
+    const filePath = join(process.cwd(), 'public', 'uploads', ...pathSegments);
     
     // Check if file exists
     try {
