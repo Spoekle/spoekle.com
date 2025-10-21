@@ -19,15 +19,14 @@ const DefaultLayout = ({
   contentAnimationDelay = 0.3
 }: DefaultLayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-neutral-900 transition duration-200 overflow-hidden">
+    <div className="min-h-screen flex flex-col bg-neutral-100 dark:bg-neutral-900 transition duration-200 overflow-hidden mx-6">
       {backgroundImage ? (
         <div 
-          className="w-full flex h-[500px] justify-center items-center"
+          className="w-full flex mr-2 h-[500px] justify-center items-center rounded-b-4xl overflow-hidden relative"
           style={{ 
             backgroundImage: `url(${backgroundImage})`, 
             backgroundSize: 'cover', 
-            backgroundPosition: 'center', 
-            clipPath: 'polygon(0 0, 100% 0, 100% 85%, 0 100%)' 
+            backgroundPosition: 'center'
           }}
         >
           <div className="flex bg-gradient-to-b from-black/70 via-black/50 to-black/30 dark:from-neutral-900/80 dark:to-black/40 backdrop-blur-md justify-center items-center w-full h-full">
@@ -59,7 +58,7 @@ const DefaultLayout = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: contentAnimationDelay }}
-        className="flex-grow w-full px-4 md:px-8 pt-16 pb-12 bg-slate-50 dark:bg-neutral-900 transition duration-200 text-neutral-800 dark:text-white overflow-hidden"
+        className="flex-grow w-full px-4 md:px-8 pt-16 pb-12 bg-neutral-100 dark:bg-neutral-900 transition duration-200 text-neutral-800 dark:text-white overflow-hidden"
       >
         {children}
       </motion.main>
