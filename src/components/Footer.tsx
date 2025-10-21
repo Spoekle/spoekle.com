@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaGithub, FaYoutube, FaSun, FaMoon, FaSnowflake, FaTiktok, FaLinkedin, FaTwitch } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaSun, FaMoon, FaSnowflake, FaTiktok, FaLinkedin, FaTwitch, FaDiscord } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -106,6 +106,9 @@ function Footer() {
             <div className="flex space-x-4 mb-4">
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }} href="https://www.youtube.com/@Spoekle" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors" aria-label="YouTube">
                 <FaYoutube size={20} />
+              </motion.a>
+              <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }} href="https://discord.com/channels/@me/435825557087977492" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors" aria-label="Discord">
+                <FaDiscord size={20} />
               </motion.a>
               <motion.a whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }} href="https://twitch.tv/Spoekle" target="_blank" rel="noreferrer" className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors" aria-label="Twitch">
                 <FaTwitch size={20} />
