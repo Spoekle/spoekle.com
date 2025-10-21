@@ -83,7 +83,7 @@ export default function Specs() {
   ];
 
   return (
-    <section className="py-32 bg-neutral-50 dark:bg-neutral-950/70 backdrop-blur-sm rounded-2xl">
+    <section className="py-32 bg-neutral-200/70 dark:bg-neutral-950/70 backdrop-blur-sm rounded-2xl">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
           className="max-w-4xl mx-auto"

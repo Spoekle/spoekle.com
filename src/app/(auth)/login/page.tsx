@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useNotification } from '@/context/NotificationContext';
 import { cookieUtils } from '@/lib/cookies';
+import DefaultLayout from '@/components/DefaultLayout';
 
 function LoginPageContent() {
   const [formMode, setFormMode] = useState<'login' | 'register' | 'forgot-password'>('login');
@@ -121,19 +122,21 @@ function LoginPageContent() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="w-full max-w-md relative z-10"
-      >
-        <div className="bg-white/85 dark:bg-neutral-800/85 backdrop-blur-xl shadow-[0_10px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_10px_50px_rgba(0,0,0,0.3)] rounded-2xl p-10 border border-white/30 dark:border-neutral-700/60 overflow-hidden">
-          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-br from-purple-400/15 via-indigo-400/10 to-transparent dark:from-purple-900/25 dark:via-indigo-900/15 dark:to-transparent" />
-          </div>
-          
-          <div className="relative z-10">
+    <DefaultLayout
+      title="Login"
+      subtitle="Access your account"
+      backgroundImage="/assets/slider/slider1.webp"
+    >
+      <div className="">
+        <div className="container mx-auto px-4 md:px-8 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full max-w-md"
+          >
+            <div className="bg-neutral-200/50 dark:bg-neutral-950/50 backdrop-blur-xl rounded-2xl border border-neutral-200 dark:border-white/10 shadow-lg dark:shadow-none p-10 overflow-hidden">
+              <div className="relative z-10">
             <AnimatePresence mode="wait">
               {formMode === 'login' && (
                 <motion.div
@@ -143,7 +146,7 @@ function LoginPageContent() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h2 className="text-3xl font-bold mb-7 bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">Sign In</h2>
+                  <h2 className="text-3xl font-bold mb-7 text-neutral-900 dark:text-white">Sign In</h2>
                   
                   {error && (
                     <motion.div 
@@ -167,7 +170,7 @@ function LoginPageContent() {
                           type="text"
                           value={formData.username}
                           onChange={handleChange}
-                          className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 dark:border-neutral-600/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 dark:focus:ring-indigo-500/70 focus:border-transparent text-neutral-900 dark:text-white transition-all duration-200"
+                          className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your username"
                         />
                         <FaUser className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
@@ -185,7 +188,7 @@ function LoginPageContent() {
                           type="password"
                           value={formData.password}
                           onChange={handleChange}
-                          className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 dark:border-neutral-600/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 dark:focus:ring-indigo-500/70 focus:border-transparent text-neutral-900 dark:text-white transition-all duration-200"
+                          className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your password"
                         />
                         <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
@@ -196,14 +199,14 @@ function LoginPageContent() {
                       <button 
                         type="button"
                         onClick={() => setFormMode('register')}
-                        className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 hover:underline"
+                        className="text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:underline"
                       >
                         Create an account
                       </button>
                       <button 
                         type="button"
                         onClick={() => setFormMode('forgot-password')} 
-                        className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 hover:underline"
+                        className="text-sm font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:underline"
                       >
                         Forgot password?
                       </button>
@@ -212,9 +215,9 @@ function LoginPageContent() {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
-                      className="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 disabled:opacity-50"
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                      className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <MdLogin className="mr-2 h-5 w-5" />}
                       Sign in
@@ -227,7 +230,7 @@ function LoginPageContent() {
                         <div className="w-full border-t border-neutral-300 dark:border-neutral-700"></div>
                       </div>
                       <div className="relative flex justify-center text-sm">
-                        <span className="px-3 bg-white dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400">
+                        <span className="px-3 bg-white dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 rounded-full">
                           Or continue with
                         </span>
                       </div>
@@ -237,7 +240,7 @@ function LoginPageContent() {
                       onClick={handleDiscordLogin}
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full mt-6 inline-flex justify-center items-center py-3 px-4 border-2 border-[#5865F2]/30 rounded-xl bg-white/60 dark:bg-[#5865F2]/10 text-sm font-medium text-[#5865F2] hover:bg-[#5865F2]/5"
+                      className="w-full mt-6 inline-flex justify-center items-center py-3 px-4 border-2 border-[#5865F2]/30 rounded-xl bg-white dark:bg-[#5865F2]/10 text-sm font-medium text-[#5865F2] hover:bg-[#5865F2]/10 transition-all duration-300"
                     >
                       <FaDiscord className="h-5 w-5 mr-2" />
                       Sign in with Discord
@@ -255,7 +258,7 @@ function LoginPageContent() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center justify-between mb-7">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">Create Account</h2>
+                    <h2 className="text-3xl font-bold text-neutral-900 dark:text-white">Create Account</h2>
                     <motion.button 
                       onClick={() => setFormMode('login')} 
                       className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 rounded-full p-1.5"
@@ -285,7 +288,7 @@ function LoginPageContent() {
                           type="text"
                           value={formData.username}
                           onChange={handleChange}
-                          className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 text-neutral-900 dark:text-white"
+                          className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Choose a username"
                         />
                         <FaUser className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
@@ -300,7 +303,7 @@ function LoginPageContent() {
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 text-neutral-900 dark:text-white"
+                          className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your email"
                         />
                         <FaEnvelope className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
@@ -315,7 +318,7 @@ function LoginPageContent() {
                           type="password"
                           value={formData.password}
                           onChange={handleChange}
-                          className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 text-neutral-900 dark:text-white"
+                          className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Create a strong password"
                         />
                         <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
@@ -325,20 +328,20 @@ function LoginPageContent() {
                     <motion.button
                       type="submit"
                       disabled={isSubmitting}
-                      whileHover={{ scale: 1.01 }}
-                      whileTap={{ scale: 0.99 }}
-                      className="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700"
+                      whileHover={{ scale: isSubmitting ? 1 : 1.02, y: isSubmitting ? 0 : -2 }}
+                      whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                      className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <MdLogin className="mr-2 h-5 w-5" />}
                       Create Account
                     </motion.button>
                   </form>
                   
-                  <div className="mt-7 text-center text-sm">
+                    <div className="mt-7 text-center text-sm">
                     <span className="text-neutral-600 dark:text-neutral-400">Already have an account? </span>
                     <button 
                       onClick={() => setFormMode('login')} 
-                      className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 hover:underline"
+                      className="font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:underline"
                     >
                       Sign in
                     </button>
@@ -355,7 +358,7 @@ function LoginPageContent() {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center justify-between mb-7">
-                    <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-indigo-600 bg-clip-text text-transparent">Reset Password</h2>
+                    <h2 className="text-3xl font-bold text-neutral-900 dark:text-white">Reset Password</h2>
                     <motion.button 
                       onClick={() => setFormMode('login')} 
                       className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 rounded-full p-1.5"
@@ -376,7 +379,7 @@ function LoginPageContent() {
                         type="email"
                         value={email}
                         onChange={handleEmailChange}
-                        className="w-full px-4 py-2.5 pl-11 bg-white/60 dark:bg-neutral-700/60 border-2 border-neutral-300/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500/70 text-neutral-900 dark:text-white"
+                        className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                         placeholder="Enter your email"
                       />
                       <FaEnvelope className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
@@ -387,9 +390,9 @@ function LoginPageContent() {
                     type="button"
                     onClick={handlePasswordReset}
                     disabled={awaitingReset}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                    className="w-full flex justify-center items-center py-3 px-4 rounded-xl shadow-md text-sm font-medium text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700"
+                    whileHover={{ scale: awaitingReset ? 1 : 1.02, y: awaitingReset ? 0 : -2 }}
+                    whileTap={{ scale: awaitingReset ? 1 : 0.95 }}
+                    className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {awaitingReset ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <FaEnvelope className="mr-2 h-5 w-5" />}
                     {awaitingReset ? 'Sending...' : 'Send Reset Instructions'}
@@ -398,7 +401,7 @@ function LoginPageContent() {
                   <div className="mt-7 text-center text-sm">
                     <button 
                       onClick={() => setFormMode('login')} 
-                      className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 hover:underline"
+                      className="font-medium text-neutral-700 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white hover:underline"
                     >
                       Back to login
                     </button>
@@ -406,22 +409,32 @@ function LoginPageContent() {
                 </motion.div>
               )}    
             </AnimatePresence>
-          </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </DefaultLayout>
   );
 }
 
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center py-12 px-4">
-        <div className="text-center">
-          <FaSpinner className="animate-spin text-4xl mx-auto mb-4" />
-          <p>Loading...</p>
+      <DefaultLayout
+        title="Login"
+        subtitle="Access your account"
+        backgroundImage="/assets/slider/slider1.webp"
+      >
+        <div className="py-16 bg-neutral-200/40 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl">
+          <div className="container mx-auto px-4 md:px-8 flex items-center justify-center">
+            <div className="text-center">
+              <FaSpinner className="animate-spin text-4xl mx-auto mb-4 text-neutral-900 dark:text-white" />
+              <p className="text-neutral-900 dark:text-white">Loading...</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </DefaultLayout>
     }>
       <LoginPageContent />
     </Suspense>

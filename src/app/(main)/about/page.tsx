@@ -105,7 +105,6 @@ export default function AboutPage() {
       >
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 py-12">
           <div className="flex items-center justify-center h-64">
-            <div className="text-center">Loading...</div>
           </div>
         </div>
       </DefaultLayout>

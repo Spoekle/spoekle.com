@@ -120,10 +120,10 @@ export default function ContactPage() {
     <DefaultLayout
       title="Contact Me"
       subtitle="Let's work together"
-      backgroundImage="/assets/spoekle.webp"
+      backgroundImage="/assets/slider/slider1.webp"
     >
       {/* Intro Section */}
-      <section className="py-32 bg-neutral-100/80 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl mb-16">
+      <section className="py-32 bg-neutral-200/40 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl mb-16">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
             className="max-w-4xl mx-auto text-center"
@@ -148,7 +148,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-32 bg-neutral-50 dark:bg-neutral-950/70 backdrop-blur-sm rounded-2xl mb-16">
+      <section className="py-32 bg-neutral-200/70 dark:bg-neutral-950/70 backdrop-blur-sm rounded-2xl mb-16">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
             className="max-w-4xl mx-auto"
@@ -268,7 +268,7 @@ export default function ContactPage() {
       </section>
 
       {/* Other Ways to Connect Section */}
-      <section className="py-32 bg-neutral-100/80 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl">
+      <section className="py-32 bg-neutral-200/40 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
             className="max-w-4xl mx-auto text-center"
@@ -289,7 +289,7 @@ export default function ContactPage() {
               </p>
 
               <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-                I'm most active on Discord, TikTok, and GitHub, so those are your best bets for a quicker response!
+                I'm most active on Discord, Instagram, and GitHub, so those are your best bets for a quicker response!
               </p>
             </motion.div>
           </motion.div>
