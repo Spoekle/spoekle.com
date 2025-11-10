@@ -42,7 +42,7 @@ export default function Specs() {
 
   const mainSetup = [
     { name: 'CPU', description: 'AMD Ryzen 7 7800X3D' },
-    { name: 'GPU', description: 'AMD Radeon 7900XTX' },
+    { name: 'GPU', description: 'Gigabyte AERO NVIDIA GeForce RTX 5080' },
     { name: 'Mobo', description: 'Gigabyte B650E AORUS ELITE X AX ICE' },
     { name: 'PSU', description: 'be quiet! Pure Power 11 850W' },
     { name: 'Cooling', description: 'Cooler Master ML240L V2 RGB White' },
