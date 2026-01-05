@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PoweredByGrabs from "@/components/PoweredByGrabs";
 import NotificationContainer from "@/components/NotificationContainer";
 import { NotificationProvider } from "@/context/NotificationContext";
 import { AuthProvider } from "@/context/AuthContext";
@@ -40,6 +41,7 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
+              <PoweredByGrabs />
               <NotificationContainer />
             </div>
           </NotificationProvider>

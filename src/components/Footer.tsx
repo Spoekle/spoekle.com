@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaGithub, FaYoutube, FaSun, FaMoon, FaSnowflake, FaTiktok, FaLinkedin, FaTwitch, FaDiscord } from 'react-icons/fa';
+import { FaGithub, FaYoutube, FaSun, FaMoon, FaTiktok, FaLinkedin, FaTwitch, FaDiscord } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -14,16 +14,7 @@ function Footer() {
     }
     return true;
   });
-  
-  const [seasonInfo, setSeasonInfo] = useState({ season: '' });
-  
-  const [snow, setSnow] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedSnow = localStorage.getItem('snow');
-      return savedSnow !== 'false';
-    }
-    return true;
-  });
+
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -35,41 +26,10 @@ function Footer() {
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
     }
-
-    getSeason();
   }, [isDarkMode]);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('snow', snow ? 'true' : 'false');
-    }
-  }, [snow]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-  };
-
-  const toggleSnow = () => {
-    setSnow(!snow);
-  }; 
-
-  const getSeason = () => {
-    const now = new Date();
-    const month = now.getMonth() + 1;
-    const day = now.getDate();
-    let season = '';
-  
-    if ((month === 3 && day >= 20) || (month > 3 && month < 6) || (month === 6 && day <= 20)) {
-      season = 'Spring';
-    } else if ((month === 6 && day >= 21) || (month > 6 && month < 9) || (month === 9 && day <= 20)) {
-      season = 'Summer';
-    } else if ((month === 9 && day >= 21) || (month > 9 && month < 12) || (month === 12 && day <= 20)) {
-      season = 'Fall';
-    } else {
-      season = 'Winter';
-    }
-  
-    setSeasonInfo({ season });
   };
 
   return (
@@ -125,12 +85,7 @@ function Footer() {
             </div>
             
             <div className="flex space-x-3">
-              {seasonInfo.season === 'Winter' && (
-                <motion.button whileHover={{ rotate: 45 }} whileTap={{ scale: 0.9 }} onClick={toggleSnow} className={`p-2 rounded-lg ${snow ? "text-blue-600 dark:text-blue-400" : "text-neutral-400"} bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition duration-200`} title='Toggle Snow' aria-label="Toggle Snow Effect">
-                  <FaSnowflake size={18} />
-                </motion.button>
-              )}
-              <motion.button whileHover={{ rotate: 20 }} whileTap={{ scale: 0.9 }} onClick={toggleDarkMode} className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition duration-200" title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'} aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+              <motion.button whileHover={{ y: -3 }} whileTap={{ scale: 0.9 }} onClick={toggleDarkMode} className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition duration-200" title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'} aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
                 {isDarkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
               </motion.button>
             </div>
