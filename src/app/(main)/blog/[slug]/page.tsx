@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaClock, FaTag, FaUser, FaArrowLeft } from 'react-icons/fa';
+import { Clock, Tag, User, ArrowLeft } from 'lucide-react';
 import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -120,7 +120,7 @@ export default function BlogPostPage() {
           href="/blog"
           className="inline-flex items-center gap-2 text-neutral-900 dark:text-white hover:text-neutral-700 dark:hover:text-neutral-300 font-semibold text-lg mb-8 transition-colors"
         >
-          <FaArrowLeft />
+          <ArrowLeft className="w-5 h-5" />
           Back to Blog
         </Link>
       </div>
@@ -140,11 +140,11 @@ export default function BlogPostPage() {
 
             <div className="flex flex-wrap items-center gap-6 text-lg text-neutral-600 dark:text-neutral-400 mb-8">
               <div className="flex items-center gap-2">
-                <FaUser />
+                <User className="w-5 h-5" />
                 <span className="font-medium">{post.author.username}</span>
               </div>
               <div className="flex items-center gap-2">
-                <FaClock />
+                <Clock className="w-5 h-5" />
                 <span>{formatDate(post.publishedDate)}</span>
                 { post.publishedDate !== post.updatedDate && (<span> (Last updated: {formatDate(post.updatedDate)})</span>)}
               </div>
@@ -157,7 +157,7 @@ export default function BlogPostPage() {
                     key={tag}
                     className="flex items-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-900/50 backdrop-blur-xl text-neutral-900 dark:text-white rounded-xl text-sm font-semibold border border-neutral-200 dark:border-white/10"
                   >
-                    <FaTag className="text-xs" />
+                    <Tag className="w-3.5 h-3.5" />
                     {tag}
                   </span>
                 ))}

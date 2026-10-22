@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaGamepad, FaServer, FaYoutube } from 'react-icons/fa';
+import { Code2, Gamepad2, Server } from 'lucide-react';
+import { FaYoutube } from '@/components/icons/BrandIcons';
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -100,7 +101,7 @@ export default function Me() {
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
                                 <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6 text-white text-3xl group-hover:scale-110 transition-transform duration-300">
-                                    <FaCode />
+                                    <Code2 />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-white">Web Development</h3>
                                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -128,7 +129,7 @@ export default function Me() {
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
                                 <div className="w-16 h-16 bg-amber-600 rounded-xl flex items-center justify-center mb-6 text-white text-3xl group-hover:scale-110 transition-transform duration-300">
-                                    <FaGamepad />
+                                    <Gamepad2 />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-white">Gaming</h3>
                                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -142,7 +143,7 @@ export default function Me() {
                                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                             >
                                 <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6 text-white text-3xl group-hover:scale-110 transition-transform duration-300">
-                                    <FaServer />
+                                    <Server />
                                 </div>
                                 <h3 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-white">Homeserver</h3>
                                 <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">

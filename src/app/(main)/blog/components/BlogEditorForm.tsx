@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaSave, FaImage, FaTimes, FaArrowLeft, FaEye, FaTrash } from 'react-icons/fa';
+import { Save, Image as ImageIcon, X, ArrowLeft, Eye, Trash2 } from 'lucide-react';
 import MDEditor from '@uiw/react-md-editor';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
@@ -287,7 +287,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
           onClick={() => router.push('/blog')}
           className="flex items-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-white transition-colors"
         >
-          <FaArrowLeft className="mr-2" /> Back to Blog
+          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Blog
         </button>
         
         <div className="flex items-center gap-3">
@@ -297,7 +297,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
               disabled={loading}
               className="flex items-center px-4 py-1.5 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors disabled:opacity-50"
             >
-              <FaTrash className="mr-2" /> Delete
+              <Trash2 className="w-4 h-4 mr-2" /> Delete
             </button>
           )}
           
@@ -309,7 +309,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
               : 'bg-neutral-100 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300'
             } transition-colors`}
           >
-            <FaEye className="mr-2" /> {previewMode ? 'Edit Mode' : 'Preview'}
+            <Eye className="w-4 h-4 mr-2" /> {previewMode ? 'Edit Mode' : 'Preview'}
           </button>
           
           <button
@@ -317,7 +317,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
             disabled={loading}
             className="flex items-center px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors disabled:opacity-50"
           >
-            <FaSave className="mr-2" /> {loading ? 'Saving...' : 'Save Post'}
+            <Save className="w-4 h-4 mr-2" /> {loading ? 'Saving...' : 'Save Post'}
           </button>
         </div>
       </div>
@@ -386,7 +386,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
             </label>
             <div className="flex items-center gap-4">
               <label className="flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-800/30 transition-colors">
-                <FaImage className="mr-2" />
+                <ImageIcon className="w-4 h-4 mr-2" />
                 {imageUploading ? 'Uploading...' : 'Select Image'}
                 <input
                   type="file"
@@ -410,7 +410,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
                     onClick={() => setPost(prev => ({ ...prev, featuredImage: '' }))}
                     className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                   >
-                    <FaTimes />
+                    <X className="w-4 h-4" />
                   </button>
                 </div>
               )}
@@ -458,7 +458,7 @@ export default function BlogEditorForm({ slug }: BlogEditorFormProps) {
                     onClick={() => removeTag(tag)}
                     className="ml-2 text-neutral-500 hover:text-red-500"
                   >
-                    <FaTimes size={12} />
+                    <X size={12} />
                   </button>
                 </span>
               ))}

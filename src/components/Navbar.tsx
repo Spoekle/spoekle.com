@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaSearch, FaUserCircle } from 'react-icons/fa';
-import { MdLogout } from 'react-icons/md';
+import { CircleUser, LogOut } from 'lucide-react';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { useAuth } from '@/context/AuthContext';
 import Image from 'next/image';
@@ -158,7 +157,7 @@ const Navbar: React.FC = () => {
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-neutral-800 rounded-lg shadow-lg border border-neutral-200 dark:border-neutral-700 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 transform origin-top-right scale-95 group-hover:scale-100 z-50">
                   <div className="py-1">
                     <Link href="/profile" className="flex items-center px-4 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors">
-                      <FaUserCircle className="mr-2" />
+                      <CircleUser className="w-4 h-4 mr-2" />
                       Profile
                     </Link>
                     {user.roles?.includes('admin') && (
@@ -174,7 +173,7 @@ const Navbar: React.FC = () => {
                       onClick={handleLogout}
                       className="w-full text-left flex items-center px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors"
                     >
-                      <MdLogout className="mr-2" />
+                      <LogOut className="w-4 h-4 mr-2" />
                       Sign out
                     </button>
                   </div>
@@ -185,7 +184,7 @@ const Navbar: React.FC = () => {
                 href="/login" 
                 className="flex items-center bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-5 py-2 rounded-lg transition-colors duration-200 hover:bg-neutral-800 dark:hover:bg-neutral-100 font-medium"
               >
-                <FaUserCircle className="mr-2" />
+                <CircleUser className="w-4 h-4 mr-2" />
                 <span>Sign In</span>
               </Link>
             )}
@@ -205,7 +204,7 @@ const Navbar: React.FC = () => {
                   <>
                     <div className="border-t border-neutral-200 dark:border-neutral-700 my-2" />
                     <Link href="/profile" className="flex items-center py-2 px-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
-                      <FaUserCircle className="mr-2" />
+                      <CircleUser className="w-4 h-4 mr-2" />
                       Profile
                     </Link>
                     {user.roles?.includes('admin') && (
@@ -221,7 +220,7 @@ const Navbar: React.FC = () => {
                       onClick={() => { handleLogout(); setIsMenuOpen(false); }}
                       className="w-full text-left flex items-center py-2 px-3 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors font-medium text-red-600 dark:text-red-400"
                     >
-                      <MdLogout className="mr-2" />
+                      <LogOut className="w-4 h-4 mr-2" />
                       Sign out
                     </button>
                   </>
@@ -233,7 +232,7 @@ const Navbar: React.FC = () => {
                       className="flex items-center justify-center bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 py-2 px-3 rounded-lg transition-colors hover:bg-neutral-800 dark:hover:bg-neutral-100 font-medium"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <FaUserCircle className="mr-2" />
+                      <CircleUser className="w-4 h-4 mr-2" />
                       Sign In
                     </Link>
                   </>

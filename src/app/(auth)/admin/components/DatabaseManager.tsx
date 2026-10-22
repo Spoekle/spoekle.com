@@ -1,7 +1,19 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaDatabase, FaUnlock, FaLock, FaEdit, FaTrash, FaPlus, FaSave, FaTimes, FaChevronDown, FaChevronRight, FaExclamationTriangle } from 'react-icons/fa';
+import { 
+  Database, 
+  Unlock, 
+  Lock, 
+  Pencil, 
+  Trash2, 
+  Plus, 
+  Save, 
+  X, 
+  ChevronDown, 
+  ChevronRight, 
+  AlertTriangle 
+} from 'lucide-react';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
 
@@ -279,7 +291,7 @@ const DatabaseManager: React.FC = () => {
         }
         setIsLoading(false);
       },
-      icon: <FaTrash className="text-red-500 text-xl" />
+      icon: <Trash2 className="text-red-500 w-5 h-5" />
     });
   };
   
@@ -317,7 +329,7 @@ const DatabaseManager: React.FC = () => {
         }
         setIsLoading(false);
       },
-      icon: <FaExclamationTriangle className="text-red-500 text-xl" />
+      icon: <AlertTriangle className="text-red-500 w-5 h-5" />
     });
   };
 
@@ -537,12 +549,12 @@ const DatabaseManager: React.FC = () => {
     return (
       <div className="p-4 bg-neutral-300 dark:bg-neutral-800 rounded-lg">
         <h2 className="text-2xl font-semibold mb-6 text-neutral-800 dark:text-white flex items-center">
-          <FaDatabase className="mr-2 text-blue-500" /> Database Manager
+          <Database className="w-6 h-6 mr-2 text-blue-500" /> Database Manager
         </h2>
         
         <div className="p-6 border border-neutral-200 dark:border-neutral-700 rounded-lg bg-neutral-200 dark:bg-neutral-900">
           <div className="flex items-center justify-center mb-6">
-            <FaLock className="text-4xl text-yellow-500" />
+            <Lock className="w-10 h-10 text-yellow-500" />
           </div>
           
           <h3 className="text-lg font-medium text-center mb-4 text-neutral-800 dark:text-white">
@@ -579,7 +591,7 @@ const DatabaseManager: React.FC = () => {
           >
             {isLoading ? 'Unlocking...' : (
               <>
-                <FaUnlock className="mr-2" /> Unlock Database Manager
+                <Unlock className="w-4 h-4 mr-2" /> Unlock Database Manager
               </>
             )}
           </button>
@@ -606,14 +618,14 @@ const DatabaseManager: React.FC = () => {
       
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-semibold text-neutral-800 dark:text-white flex items-center">
-          <FaDatabase className="mr-2 text-blue-500" /> Database Manager
+          <Database className="w-6 h-6 mr-2 text-blue-500" /> Database Manager
         </h2>
         
         <button 
           onClick={() => setIsUnlocked(false)}
           className="p-2 bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-white rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          <FaLock className="text-lg" />
+          <Lock className="w-5 h-5" />
         </button>
       </div>
       
@@ -644,7 +656,7 @@ const DatabaseManager: React.FC = () => {
                       className="p-1 text-red-500 opacity-0 group-hover:opacity-100 hover:bg-red-100 dark:hover:bg-red-900/30 rounded-md transition-opacity"
                       title={`Drop ${collection} collection`}
                     >
-                      <FaTrash size={12} />
+                      <Trash2 size={12} />
                     </button>
                   </li>
                 ))}
@@ -657,7 +669,7 @@ const DatabaseManager: React.FC = () => {
         <div className="md:col-span-3 bg-white dark:bg-neutral-700 p-4 border border-neutral-200 dark:border-neutral-600 rounded-lg">
           {!selectedCollection ? (
             <div className="flex flex-col items-center justify-center h-64 text-neutral-500 dark:text-neutral-400">
-              <FaDatabase className="text-4xl mb-3" />
+              <Database className="w-10 h-10 mb-3" />
               <p>Select a collection to view its documents</p>
             </div>
           ) : (
@@ -671,7 +683,7 @@ const DatabaseManager: React.FC = () => {
                   onClick={() => setShowNewForm(true)}
                   className="flex items-center px-3 py-1 rounded-md bg-green-600 text-white text-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
                 >
-                  <FaPlus className="mr-1" /> New Document
+                  <Plus className="w-4 h-4 mr-1" /> New Document
                 </button>
               </div>
 
@@ -684,7 +696,7 @@ const DatabaseManager: React.FC = () => {
                       onClick={() => setShowNewForm(false)}
                       className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                     >
-                      <FaTimes />
+                      <X className="w-4 h-4" />
                     </button>
                   </div>
                   
@@ -739,8 +751,8 @@ const DatabaseManager: React.FC = () => {
                                   className="flex items-center text-neutral-800 dark:text-neutral-200"
                                 >
                                   {expandedDocs[document._id] ? 
-                                    <FaChevronDown className="mr-2 text-neutral-500" /> : 
-                                    <FaChevronRight className="mr-2 text-neutral-500" />}
+                                    <ChevronDown className="w-4 h-4 mr-2 text-neutral-500" /> : 
+                                    <ChevronRight className="w-4 h-4 mr-2 text-neutral-500" />}
                                   <span className="font-mono text-neutral-600 dark:text-neutral-300">
                                     {document._id}
                                   </span>
@@ -751,13 +763,13 @@ const DatabaseManager: React.FC = () => {
                                   onClick={() => handleEdit(document)}
                                   className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 mx-2"
                                 >
-                                  <FaEdit />
+                                  <Pencil className="w-4 h-4" />
                                 </button>
                                 <button
                                   onClick={() => handleDelete(document._id)}
                                   className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 mx-2"
                                 >
-                                  <FaTrash />
+                                  <Trash2 className="w-4 h-4" />
                                 </button>
                               </td>
                             </tr>
@@ -826,7 +838,7 @@ const DatabaseManager: React.FC = () => {
                           onClick={handleCancelEdit}
                           className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                         >
-                          <FaTimes />
+                          <X className="w-4 h-4" />
                         </button>
                       </div>
                       
@@ -859,7 +871,7 @@ const DatabaseManager: React.FC = () => {
                         >
                           {isLoading ? 'Saving...' : (
                             <>
-                              <FaSave className="mr-1" /> Save Changes
+                              <Save className="w-4 h-4 mr-1" /> Save Changes
                             </>
                           )}
                         </button>

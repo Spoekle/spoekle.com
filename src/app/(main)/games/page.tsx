@@ -3,10 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaGamepad, FaSteam, FaArrowRight, FaDesktop } from 'react-icons/fa';
-import { SiUnity, SiBlockbench } from 'react-icons/si';
-import { MdHeadset } from 'react-icons/md';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { Gamepad2, ArrowRight, Monitor, Headphones, Loader2 } from 'lucide-react';
+import { FaSteam, SiUnity, SiBlockbench } from '@/components/icons/BrandIcons';
 import DefaultLayout from '@/components/DefaultLayout';
 import Image from 'next/image';
 import { fetchGames, Game } from './gamesData';
@@ -106,7 +104,7 @@ export default function GamesPage() {
                 className="inline-block p-4 rounded-2xl bg-neutral-900 dark:bg-white mb-6"
                 variants={fadeIn}
               >
-                <FaGamepad className="text-4xl text-white dark:text-neutral-900" />
+                <Gamepad2 className="w-10 h-10 text-white dark:text-neutral-900" />
               </motion.div>
               <motion.h2
                 className="text-5xl md:text-6xl font-black text-neutral-900 dark:text-white mb-6"
@@ -124,7 +122,7 @@ export default function GamesPage() {
 
             {loading ? (
               <div className="flex justify-center items-center py-16">
-                <BiLoaderCircle className="animate-spin text-5xl text-neutral-900 dark:text-white" />
+                <Loader2 className="animate-spin w-12 h-12 text-neutral-900 dark:text-white" />
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -156,7 +154,7 @@ export default function GamesPage() {
                     <p className="text-white/90 mb-4">{game.shortDescription}</p>
                     <div className="flex items-center text-white font-medium group-hover:gap-3 transition-all">
                       <span>Learn More</span>
-                      <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </motion.div>
@@ -182,8 +180,8 @@ export default function GamesPage() {
                 <div className="space-y-8">
                   <motion.div variants={cardVariants}>
                     <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                        <FaDesktop />
+                      <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center text-white mr-4">
+                        <Monitor className="w-8 h-8" />
                       </div>
                       <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">PC Specs</h3>
                     </div>
@@ -201,8 +199,8 @@ export default function GamesPage() {
 
                   <motion.div variants={cardVariants}>
                     <div className="flex items-center mb-6">
-                      <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                        <MdHeadset />
+                      <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center text-white mr-4">
+                        <Headphones className="w-8 h-8" />
                       </div>
                       <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">VR Equipment</h3>
                     </div>
@@ -222,8 +220,8 @@ export default function GamesPage() {
                 {/* Right Column - Gaming Platforms */}
                 <motion.div variants={cardVariants}>
                   <div className="flex items-center mb-6">
-                    <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                      <FaGamepad />
+                    <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center text-white mr-4">
+                      <Gamepad2 className="w-8 h-8" />
                     </div>
                     <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Gaming Platforms</h3>
                   </div>

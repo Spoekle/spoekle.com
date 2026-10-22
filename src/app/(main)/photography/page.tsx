@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaChevronLeft, FaChevronRight, FaCamera, FaClock, FaUpload, FaEdit, FaTrash } from 'react-icons/fa';
+import { X, ChevronLeft, ChevronRight, Camera, Clock, Upload, Trash2 } from 'lucide-react';
 import axios from 'axios';
 import Image from 'next/image';
 import DefaultLayout from '@/components/DefaultLayout';
@@ -144,7 +144,7 @@ export default function PhotographyPage() {
                 onClick={() => setShowUploadForm(true)}
                 className="flex items-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-xl font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300"
               >
-                <FaUpload />
+                <Upload className="w-5 h-5" />
                 Upload Photo
               </button>
             </div>
@@ -156,7 +156,7 @@ export default function PhotographyPage() {
             </div>
           ) : photos.length === 0 ? (
             <div className="text-center py-32">
-              <FaCamera className="text-8xl text-neutral-400 dark:text-neutral-600 mx-auto mb-6" />
+              <Camera className="w-24 h-24 text-neutral-400 dark:text-neutral-600 mx-auto mb-6" />
               <p className="text-4xl font-bold text-neutral-900 dark:text-white mb-3">No photos yet.</p>
               <p className="text-lg text-neutral-600 dark:text-neutral-400 mt-2">Check back later for new photos!</p>
             </div>
@@ -205,14 +205,14 @@ export default function PhotographyPage() {
               onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
               className="absolute left-4 text-white hover:text-neutral-300 p-3 z-50 bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300"
             >
-              <FaChevronLeft className="text-4xl" />
+              <ChevronLeft className="w-8 h-8" />
             </button>
 
             <button
               onClick={(e) => { e.stopPropagation(); goToNext(); }}
               className="absolute right-4 text-white hover:text-neutral-300 p-3 z-50 bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300"
             >
-              <FaChevronRight className="text-4xl" />
+              <ChevronRight className="w-8 h-8" />
             </button>
 
             <div className="max-w-7xl w-full flex flex-col lg:flex-row gap-6" onClick={(e) => e.stopPropagation()}>
@@ -238,7 +238,7 @@ export default function PhotographyPage() {
                   onClick={closeLightbox}
                   className="absolute top-4 right-4 text-white hover:text-neutral-300 p-2 z-50 hover:cursor-pointer bg-white/10 rounded-xl hover:bg-white/20 transition-all duration-300"
                 >
-                  <FaTimes className="text-3xl" />
+                  <X className="w-6 h-6" />
                 </button>
                 <h2 className="text-3xl font-black text-white mb-6">{selectedPhoto.title}</h2>
                 
@@ -248,7 +248,7 @@ export default function PhotographyPage() {
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 text-neutral-400">
-                    <FaClock />
+                    <Clock className="w-4 h-4" />
                     <span className="text-sm">{formatDate(selectedPhoto.createdAt)}</span>
                   </div>
 
@@ -347,7 +347,7 @@ export default function PhotographyPage() {
                       onClick={() => handleDeletePhoto(selectedPhoto._id)}
                       className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-all duration-300"
                     >
-                      <FaTrash />
+                      <Trash2 className="w-4 h-4" />
                       Delete
                     </button>
                   </div>

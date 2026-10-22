@@ -3,7 +3,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaSave, FaTimes, FaUpload, FaStar } from 'react-icons/fa';
+import { Save, X, Upload, Star } from 'lucide-react';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
 
@@ -145,7 +145,7 @@ export default function FeaturedItemEditorForm({ item, isEdit = false }: Feature
       className="bg-white/80 dark:bg-neutral-800/80 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/20 dark:border-neutral-700/50"
     >
       <div className="flex items-center mb-6">
-        <FaStar className="text-4xl text-yellow-500 mr-4" />
+        <Star className="w-10 h-10 text-yellow-500 mr-4" />
         <div>
           <h2 className="text-2xl font-bold text-neutral-800 dark:text-white">
             {isEdit ? 'Edit Featured Item' : 'Create Featured Item'}
@@ -203,7 +203,7 @@ export default function FeaturedItemEditorForm({ item, isEdit = false }: Feature
               />
             )}
             <label className="cursor-pointer flex items-center justify-center gap-2 px-4 py-2 bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 text-neutral-800 dark:text-white rounded-lg transition-colors border border-neutral-300 dark:border-neutral-600">
-              <FaUpload />
+              <Upload className="w-4 h-4" />
               <span>Upload Image</span>
               <input
                 type="file"
@@ -295,7 +295,7 @@ export default function FeaturedItemEditorForm({ item, isEdit = false }: Feature
           disabled={loading}
           className="flex items-center gap-2 px-4 py-2 bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-white rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors disabled:opacity-50"
         >
-          <FaTimes />
+          <X className="w-4 h-4" />
           <span>Cancel</span>
         </motion.button>
 
@@ -313,7 +313,7 @@ export default function FeaturedItemEditorForm({ item, isEdit = false }: Feature
             </>
           ) : (
             <>
-              <FaSave />
+              <Save className="w-4 h-4" />
               <span>{isEdit ? 'Update' : 'Create'}</span>
             </>
           )}

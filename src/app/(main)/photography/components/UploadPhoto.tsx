@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MdOutlineUploadFile, MdPhotoCamera, MdCheckCircle, MdError, MdClose, MdDelete, MdNavigateNext, MdNavigateBefore } from 'react-icons/md';
+import { Upload, Camera, CheckCircle2, AlertCircle, X, Trash2, ChevronRight, ChevronLeft } from 'lucide-react';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
 
@@ -194,11 +194,11 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
         className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition z-10"
         aria-label="Close upload form"
       >
-        <MdClose size={24} />
+        <X size={24} />
       </button>
       
       <div className="flex items-center justify-center mb-4">
-        <MdPhotoCamera className="text-3xl text-indigo-600 dark:text-indigo-400 mr-2" />
+        <Camera className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mr-2" />
         <h2 className="text-xl font-bold text-neutral-800 dark:text-white">
           Upload Photos
         </h2>
@@ -218,7 +218,7 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
-            <MdOutlineUploadFile className="text-6xl text-indigo-500 dark:text-indigo-400 mb-4" />
+            <Upload className="w-16 h-16 text-indigo-500 dark:text-indigo-400 mb-4" />
             <p className="text-neutral-600 dark:text-neutral-400 text-lg font-medium mb-2">
               Click to select or drag photos here
             </p>
@@ -278,7 +278,7 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
                     />
                     {currentPhoto.status === 'completed' && (
                       <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
-                        <MdCheckCircle className="text-6xl text-green-500" />
+                        <CheckCircle2 className="w-16 h-16 text-green-500" />
                       </div>
                     )}
                     {currentPhoto.status === 'uploading' && (
@@ -296,14 +296,14 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
                           disabled={currentIndex === 0}
                           className="p-2 bg-black/50 text-white rounded-lg hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed transition"
                         >
-                          <MdNavigateBefore size={24} />
+                          <ChevronLeft size={24} />
                         </button>
                         <button
                           onClick={goToNext}
                           disabled={currentIndex === queue.length - 1}
                           className="p-2 bg-black/50 text-white rounded-lg hover:bg-black/70 disabled:opacity-30 disabled:cursor-not-allowed transition"
                         >
-                          <MdNavigateNext size={24} />
+                          <ChevronRight size={24} />
                         </button>
                       </>
                     )}
@@ -311,7 +311,7 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
                       onClick={() => removePhoto(currentPhoto.id)}
                       className="p-2 bg-red-500/80 text-white rounded-lg hover:bg-red-600 transition"
                     >
-                      <MdDelete size={24} />
+                      <Trash2 size={24} />
                     </button>
                   </div>
                 </div>
@@ -376,7 +376,7 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
 
                 {currentPhoto.status === 'error' && currentPhoto.error && (
                   <div className="text-red-500 flex items-center">
-                    <MdError className="mr-1" />
+                    <AlertCircle className="w-4 h-4 mr-1" />
                     {currentPhoto.error}
                   </div>
                 )}
@@ -404,7 +404,7 @@ const UploadPhoto: React.FC<UploadPhotoProps> = ({ onPhotoUploaded, onClose }) =
                 </>
               ) : (
                 <>
-                  <MdOutlineUploadFile size={20} />
+                  <Upload size={20} />
                   Upload All ({pendingCount})
                 </>
               )}

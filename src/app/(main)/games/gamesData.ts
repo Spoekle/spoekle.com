@@ -20,7 +20,7 @@ export interface Game {
   name: string;
   shortDescription: string;
   image: string;
-  icon: string; // Icon name from react-icons
+  icon: string; // Icon identifier (e.g. unity, blockbench)
   color: string; // Tailwind gradient classes
   about: string[]; // Array of paragraphs
   review?: string; // Optional review text

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaChevronDown } from 'react-icons/fa';
+import { ChevronDown } from 'lucide-react';
 
 export default function ScrollIndicator() {
   const handleScroll = () => {
@@ -25,7 +25,7 @@ export default function ScrollIndicator() {
         className="flex flex-col items-center gap-2 text-neutral-900/80 dark:text-white/80 hover:text-neutral-900 dark:hover:text-white transition-colors"
       >
         <span className="text-sm font-medium">Scroll to explore</span>
-        <FaChevronDown className="text-2xl" />
+        <ChevronDown className="w-6 h-6" />
       </motion.div>
     </motion.button>
   );

@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaCheckCircle, FaExclamationCircle, FaInfoCircle, FaExclamationTriangle, FaTimes } from 'react-icons/fa';
+import { CheckCircle2, AlertCircle, Info, AlertTriangle, X } from 'lucide-react';
 import { useNotification } from '@/context/NotificationContext';
 
 const NotificationContainer: React.FC = () => {
@@ -23,14 +23,14 @@ const NotificationContainer: React.FC = () => {
   const getIcon = (type: string) => {
     switch (type) {
       case 'success':
-        return <FaCheckCircle className="text-green-500" />;
+        return <CheckCircle2 className="text-green-500 w-5 h-5" />;
       case 'error':
-        return <FaExclamationCircle className="text-red-500" />;
+        return <AlertCircle className="text-red-500 w-5 h-5" />;
       case 'warning':
-        return <FaExclamationTriangle className="text-yellow-500" />;
+        return <AlertTriangle className="text-yellow-500 w-5 h-5" />;
       case 'info':
       default:
-        return <FaInfoCircle className="text-blue-500" />;
+        return <Info className="text-blue-500 w-5 h-5" />;
     }
   };
 
@@ -71,7 +71,7 @@ const NotificationContainer: React.FC = () => {
               className="flex-shrink-0 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors"
               aria-label="Close notification"
             >
-              <FaTimes />
+              <X className="w-4 h-4" />
             </button>
           </motion.div>
         ))}

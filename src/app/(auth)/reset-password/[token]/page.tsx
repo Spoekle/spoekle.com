@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaLock, FaSpinner } from 'react-icons/fa';
+import { Lock, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { useNotification } from '@/context/NotificationContext';
 
@@ -137,7 +137,7 @@ export default function ResetPasswordPage() {
                   required
                   minLength={6}
                 />
-                <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                <Lock className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
               </div>
             </div>
 
@@ -154,7 +154,7 @@ export default function ResetPasswordPage() {
                   required
                   minLength={6}
                 />
-                <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                <Lock className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-400" />
               </div>
             </div>
 
@@ -165,12 +165,12 @@ export default function ResetPasswordPage() {
             >
               {isSubmitting ? (
                 <>
-                  <FaSpinner className="animate-spin" />
+                  <Loader2 className="animate-spin w-5 h-5" />
                   Resetting...
                 </>
               ) : (
                 <>
-                  <FaLock />
+                  <Lock className="w-5 h-5" />
                   Reset Password
                 </>
               )}

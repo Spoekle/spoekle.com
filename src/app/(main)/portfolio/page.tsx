@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaEdit, FaTrash } from 'react-icons/fa';
+import { ExternalLink, Pencil, Trash2 } from 'lucide-react';
+import { FaGithub } from '@/components/icons/BrandIcons';
 import axios from 'axios';
 import DefaultLayout from '@/components/DefaultLayout';
 import { useAuth } from '@/context/AuthContext';
@@ -101,7 +102,7 @@ export default function PortfolioPage() {
               onClick={() => router.push('/portfolio/new')}
               className="flex items-center gap-2 px-8 py-4 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-xl font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300"
             >
-              <FaEdit />
+              <Pencil className="w-4 h-4" />
               <span>Add New Project</span>
             </motion.button>
           </div>
@@ -181,7 +182,7 @@ export default function PortfolioPage() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-xl font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 text-sm"
                       >
-                        <FaExternalLinkAlt />
+                        <ExternalLink className="w-4 h-4" />
                         <span>Live Demo</span>
                       </a>
                     )}
@@ -192,7 +193,7 @@ export default function PortfolioPage() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-white rounded-xl font-semibold transition-all duration-300 text-sm"
                       >
-                        <FaGithub />
+                        <FaGithub className="w-4 h-4" />
                         <span>Code</span>
                       </a>
                     )}
@@ -204,14 +205,14 @@ export default function PortfolioPage() {
                         onClick={() => router.push(`/portfolio/edit/${project._id}`)}
                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-xl font-semibold hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-all duration-300 text-sm"
                       >
-                        <FaEdit />
+                        <Pencil className="w-4 h-4" />
                         <span>Edit</span>
                       </button>
                       <button
                         onClick={() => handleDelete(project._id)}
                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-xl font-semibold hover:bg-red-200 dark:hover:bg-red-800/30 transition-all duration-300 text-sm"
                       >
-                        <FaTrash />
+                        <Trash2 className="w-4 h-4" />
                         <span>Delete</span>
                       </button>
                     </div>

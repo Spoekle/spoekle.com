@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaGithub, FaYoutube, FaSun, FaMoon, FaTiktok, FaLinkedin, FaTwitch, FaDiscord } from 'react-icons/fa';
+import { Sun, Moon } from 'lucide-react';
+import { FaGithub, FaYoutube, FaTiktok, FaLinkedin, FaTwitch, FaDiscord } from '@/components/icons/BrandIcons';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
@@ -86,7 +87,7 @@ function Footer() {
             
             <div className="flex space-x-3">
               <motion.button whileHover={{ y: -3 }} whileTap={{ scale: 0.9 }} onClick={toggleDarkMode} className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 border border-neutral-200 dark:border-neutral-600 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition duration-200" title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'} aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
-                {isDarkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+                {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
               </motion.button>
             </div>
           </div>

@@ -3,8 +3,22 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaUsers, FaTrash, FaEdit, FaCheck, FaTimes, FaUserClock, FaDiscord, FaUserPlus, FaStar, FaEye, FaEyeSlash, FaDatabase, FaGamepad } from 'react-icons/fa';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { 
+  Users, 
+  Trash2, 
+  Pencil, 
+  Check, 
+  X, 
+  UserCheck, 
+  UserPlus, 
+  Star, 
+  Eye, 
+  EyeOff, 
+  Database, 
+  Gamepad2, 
+  Loader2 
+} from 'lucide-react';
+import { FaDiscord } from '@/components/icons/BrandIcons';
 import axios from 'axios';
 import { useAuth } from '@/context/AuthContext';
 import { useNotification } from '@/context/NotificationContext';
@@ -404,7 +418,7 @@ function AdminPageContent() {
       >
         <div className="container max-w-7xl px-4 py-12 flex flex-col items-center justify-center">
           <h1 className="text-5xl font-bold mb-8 text-center">Loading Dashboard</h1>
-          <BiLoaderCircle className="animate-spin text-7xl" />
+          <Loader2 className="animate-spin text-7xl" />
         </div>
       </DefaultLayout>
     );
@@ -436,7 +450,7 @@ function AdminPageContent() {
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            <FaUsers />
+            <Users className="w-5 h-5" />
             <span>User Management</span>
           </button>
           <button
@@ -447,7 +461,7 @@ function AdminPageContent() {
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            <FaStar />
+            <Star className="w-5 h-5" />
             <span>Featured Items</span>
           </button>
           <button
@@ -458,7 +472,7 @@ function AdminPageContent() {
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            <FaGamepad />
+            <Gamepad2 className="w-5 h-5" />
             <span>Games</span>
           </button>
           <button
@@ -469,7 +483,7 @@ function AdminPageContent() {
                 : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white'
             }`}
           >
-            <FaDatabase />
+            <Database className="w-5 h-5" />
             <span>Database</span>
           </button>
         </motion.div>
@@ -485,7 +499,7 @@ function AdminPageContent() {
               className="w-full bg-neutral-300 dark:bg-neutral-800 text-neutral-900 dark:text-white transition duration-200 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl"
             >
               <h2 className="text-2xl md:text-3xl font-bold mb-6 border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-                <FaUsers className="mr-3 text-indigo-500" />
+                <Users className="w-6 h-6 mr-3 text-indigo-500" />
                 User Management ({users.length} active users)
               </h2>
 
@@ -576,14 +590,14 @@ function AdminPageContent() {
                               className="p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 rounded transition-colors"
                               title="Edit roles"
                             >
-                              {editingUser?._id === userItem._id ? <FaTimes /> : <FaEdit />}
+                              {editingUser?._id === userItem._id ? <X className="w-4 h-4" /> : <Pencil className="w-4 h-4" />}
                             </button>
                             <button
                               onClick={() => handleDelete(userItem._id)}
                               className="p-2 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/30 rounded transition-colors"
                               title="Delete user"
                             >
-                              <FaTrash />
+                              <Trash2 className="w-4 h-4" />
                             </button>
                           </div>
                         </td>
@@ -604,7 +618,7 @@ function AdminPageContent() {
             className="w-full bg-neutral-300 dark:bg-neutral-800 text-neutral-900 dark:text-white transition duration-200 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6 border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-              <FaUserPlus className="mr-3 text-blue-500" />
+              <UserPlus className="w-6 h-6 mr-3 text-blue-500" />
               Create User
             </h2>
 
@@ -703,7 +717,7 @@ function AdminPageContent() {
                 onClick={handleCreateUser}
                 className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2"
               >
-                <FaUserPlus />
+                <UserPlus className="w-4 h-4" />
                 Create User
               </button>
             </div>
@@ -717,7 +731,7 @@ function AdminPageContent() {
             className="w-full bg-neutral-300 dark:bg-neutral-800 text-neutral-900 dark:text-white transition duration-200 p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl"
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-6 border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-              <FaUserClock className="mr-3 text-yellow-500" />
+              <UserCheck className="w-6 h-6 mr-3 text-yellow-500" />
               Disabled Users
             </h2>
 
@@ -792,7 +806,7 @@ function AdminPageContent() {
           >
             <div className="flex justify-between items-center mb-8">
               <div className="flex items-center">
-                <FaStar className="text-4xl text-yellow-500 mr-4" />
+                <Star className="w-10 h-10 text-yellow-500 mr-4" />
                 <div>
                   <h2 className="text-2xl font-bold text-neutral-800 dark:text-white">
                     Featured Items
@@ -821,7 +835,7 @@ function AdminPageContent() {
                   onClick={() => router.push('/admin/featured/new')}
                   className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
                 >
-                  <FaEdit />
+                  <Pencil className="w-4 h-4" />
                   <span>Add Featured Item</span>
                 </motion.button>
               </div>
@@ -901,21 +915,21 @@ function AdminPageContent() {
                           }`}
                           title={item.active ? 'Active' : 'Inactive'}
                         >
-                          {item.active ? <FaEye /> : <FaEyeSlash />}
+                          {item.active ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                         </button>
                         
                         <button
                           onClick={() => router.push(`/admin/featured/edit/${item._id}`)}
                           className="p-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/30 transition-colors"
                         >
-                          <FaEdit />
+                          <Pencil className="w-4 h-4" />
                         </button>
                         
                         <button
                           onClick={() => handleDeleteFeaturedItem(item._id)}
                           className="p-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg hover:bg-red-200 dark:hover:bg-red-800/30 transition-colors"
                         >
-                          <FaTrash />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -936,7 +950,7 @@ function AdminPageContent() {
           >
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl md:text-3xl font-bold border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-                <FaGamepad className="mr-3 text-indigo-500" />
+                <Gamepad2 className="w-6 h-6 mr-3 text-indigo-500" />
                 Games Management ({games.length} total)
               </h2>
               <div className="flex gap-4">
@@ -944,7 +958,7 @@ function AdminPageContent() {
                   onClick={() => setShowInactiveGames(!showInactiveGames)}
                   className="px-4 py-2 bg-neutral-400 dark:bg-neutral-700 hover:bg-neutral-500 dark:hover:bg-neutral-600 rounded-lg transition-colors flex items-center gap-2"
                 >
-                  {showInactiveGames ? <FaEyeSlash /> : <FaEye />}
+                  {showInactiveGames ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   {showInactiveGames ? 'Hide Inactive' : 'Show Inactive'}
                 </button>
                 <button
@@ -990,7 +1004,7 @@ function AdminPageContent() {
                         onClick={() => router.push(`/admin/games/edit/${game.id}`)}
                         className="flex-1 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2"
                       >
-                        <FaEdit /> Edit
+                        <Pencil className="w-4 h-4" /> Edit
                       </button>
                       <button
                         onClick={() => toggleGameActive(game)}
@@ -1000,14 +1014,14 @@ function AdminPageContent() {
                             : 'bg-green-600 hover:bg-green-700 text-white'
                         }`}
                       >
-                        {game.active ? <FaEyeSlash /> : <FaEye />}
+                        {game.active ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                         {game.active ? 'Hide' : 'Show'}
                       </button>
                       <button
                         onClick={() => deleteGame(game.id)}
                         className="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors"
                       >
-                        <FaTrash />
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
@@ -1017,7 +1031,7 @@ function AdminPageContent() {
 
             {games.length === 0 && (
               <div className="text-center py-16">
-                <FaGamepad className="text-6xl text-neutral-500 mx-auto mb-4" />
+                <Gamepad2 className="w-16 h-16 text-neutral-500 mx-auto mb-4" />
                 <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-6">
                   No games found. Add your first game to get started!
                 </p>
@@ -1057,7 +1071,7 @@ export default function AdminPage() {
       >
         <div className="container max-w-7xl px-4 py-12 flex flex-col items-center justify-center">
           <h1 className="text-5xl font-bold mb-8 text-center">Loading Dashboard</h1>
-          <BiLoaderCircle className="animate-spin text-7xl" />
+          <Loader2 className="animate-spin text-7xl" />
         </div>
       </DefaultLayout>
     }>

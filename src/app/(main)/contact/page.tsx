@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPaperPlane, FaEnvelope, FaUser, FaTag } from 'react-icons/fa';
-import { MdMessage } from 'react-icons/md';
+import { Send, Mail, User, Tag, MessageSquare } from 'lucide-react';
 import { useNotification } from '@/context/NotificationContext';
 import DefaultLayout from '@/components/DefaultLayout';
 
@@ -181,7 +180,7 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 pl-12 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                       placeholder="John Doe"
                     />
-                    <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                    <User className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
                   </div>
                 </div>
 
@@ -199,7 +198,7 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 pl-12 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                       placeholder="john@example.com"
                     />
-                    <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                    <Mail className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
                   </div>
                 </div>
 
@@ -217,7 +216,7 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 pl-12 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                       placeholder="What's this about?"
                     />
-                    <FaTag className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
+                    <Tag className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400" />
                   </div>
                 </div>
 
@@ -235,7 +234,7 @@ export default function ContactPage() {
                       className="w-full px-4 py-4 pl-12 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white resize-none transition-all duration-300"
                       placeholder="Tell me about your project or question..."
                     />
-                    <MdMessage className="absolute left-4 top-5 text-neutral-400" />
+                    <MessageSquare className="w-5 h-5 absolute left-4 top-5 text-neutral-400" />
                   </div>
                 </div>
 
@@ -256,7 +255,7 @@ export default function ContactPage() {
                     </>
                   ) : (
                     <>
-                      <FaPaperPlane className="mr-3" />
+                      <Send className="w-5 h-5 mr-3" />
                       Send Message
                     </>
                   )}

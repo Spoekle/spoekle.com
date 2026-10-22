@@ -1,9 +1,8 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { FaYoutube, FaGithub, FaCode, FaGamepad, FaTwitch, FaArrowRight } from 'react-icons/fa';
-import { BiLinkExternal } from 'react-icons/bi';
-import { MdOutlinePhotoCamera } from 'react-icons/md';
+import { Code2, Gamepad2, Camera, ExternalLink } from 'lucide-react';
+import { FaGithub, FaYoutube, FaTwitch } from '@/components/icons/BrandIcons';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -218,7 +217,7 @@ export default function Home() {
             >
               <div className="relative bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl rounded-2xl p-8 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-300 shadow-lg dark:shadow-none">
                 <div className="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <FaCode className="text-white text-3xl" />
+                  <Code2 className="text-white w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Development</h3>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
@@ -229,7 +228,7 @@ export default function Home() {
                   className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold hover:gap-3 transition-all"
                   whileHover={{ x: 5 }}
                 >
-                  View Projects <BiLinkExternal />
+                  View Projects <ExternalLink className="w-4 h-4" />
                 </motion.button>
               </div>
             </motion.div>
@@ -245,7 +244,7 @@ export default function Home() {
             >
               <div className="relative bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl rounded-2xl p-8 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-300 shadow-lg dark:shadow-none">
                 <div className="w-16 h-16 rounded-xl bg-purple-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <FaGamepad className="text-white text-3xl" />
+                  <Gamepad2 className="text-white w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Gaming</h3>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
@@ -256,7 +255,7 @@ export default function Home() {
                   className="flex items-center gap-2 text-purple-600 dark:text-purple-400 font-semibold hover:gap-3 transition-all"
                   whileHover={{ x: 5 }}
                 >
-                  Explore Gaming <BiLinkExternal />
+                  Explore Gaming <ExternalLink className="w-4 h-4" />
                 </motion.button>
               </div>
             </motion.div>
@@ -272,7 +271,7 @@ export default function Home() {
             >
               <div className="relative bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl rounded-2xl p-8 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-300 shadow-lg dark:shadow-none">
                 <div className="w-16 h-16 rounded-xl bg-amber-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <MdOutlinePhotoCamera className="text-white text-3xl" />
+                  <Camera className="text-white w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">Photography</h3>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
@@ -283,7 +282,7 @@ export default function Home() {
                   className="flex items-center gap-2 text-amber-600 dark:text-amber-400 font-semibold hover:gap-3 transition-all"
                   whileHover={{ x: 5 }}
                 >
-                  View Gallery <BiLinkExternal />
+                  View Gallery <ExternalLink className="w-4 h-4" />
                 </motion.button>
               </div>
             </motion.div>
@@ -348,7 +347,7 @@ export default function Home() {
                       className="inline-flex items-center gap-2 text-white font-semibold"
                       whileHover={{ x: 5 }}
                     >
-                      Explore <BiLinkExternal />
+                      Explore <ExternalLink className="w-4 h-4 ml-1 inline-block" />
                     </motion.div>
                   </div>
                 </motion.div>

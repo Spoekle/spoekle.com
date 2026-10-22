@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaDesktop, FaLaptopCode, FaServer, FaCamera } from 'react-icons/fa';
+import { Monitor, Laptop, Server, Camera } from 'lucide-react';
 import Image from 'next/image';
 
 const fadeIn = {
@@ -104,7 +104,7 @@ export default function Specs() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                <FaDesktop />
+                <Monitor />
               </div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Main Setup</h3>
             </div>
@@ -143,7 +143,7 @@ export default function Specs() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-gray-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                <FaLaptopCode />
+                <Laptop />
               </div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Laptop #1</h3>
             </div>
@@ -181,7 +181,7 @@ export default function Specs() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-gray-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                <FaLaptopCode />
+                <Laptop />
               </div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Laptop #2</h3>
             </div>
@@ -219,7 +219,7 @@ export default function Specs() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                <FaServer />
+                <Server />
               </div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Server Setup</h3>
             </div>
@@ -257,7 +257,7 @@ export default function Specs() {
           >
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center text-white text-2xl mr-4">
-                <FaCamera />
+                <Camera />
               </div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white">Camera Setup</h3>
             </div>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaClock, FaTag, FaUser, FaRegNewspaper, FaSearch, FaPlus, FaSpinner } from 'react-icons/fa';
+import { Clock, Tag, User, Newspaper, Search, Plus, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import Image from 'next/image';
 import DefaultLayout from '@/components/DefaultLayout';
@@ -141,7 +141,7 @@ export default function BlogPage() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <div className="flex items-center mb-6 md:mb-0">
-              <FaRegNewspaper className="text-5xl text-neutral-900 dark:text-white mr-4" />
+              <Newspaper className="w-12 h-12 text-neutral-900 dark:text-white mr-4" />
               <div>
                 <h2 className="text-5xl md:text-6xl font-black text-neutral-900 dark:text-white">
                   Blog
@@ -165,7 +165,7 @@ export default function BlogPage() {
                   type="submit"
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-600 dark:text-neutral-400"
                 >
-                  <FaSearch />
+                  <Search className="w-5 h-5" />
                 </button>
               </form>
               
@@ -176,7 +176,7 @@ export default function BlogPage() {
                   onClick={() => router.push('/blog/new')}
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-xl font-bold hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300"
                 >
-                  <FaPlus />
+                  <Plus className="w-5 h-5" />
                   <span>Create Post</span>
                 </motion.button>
               )}
@@ -216,7 +216,7 @@ export default function BlogPage() {
           {/* Loading state */}
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <FaSpinner className="animate-spin text-5xl text-neutral-900 dark:text-white" />
+              <Loader2 className="animate-spin w-12 h-12 text-neutral-900 dark:text-white" />
             </div>
           ) : filteredPosts.length === 0 ? (
             <div className="text-center py-20">
@@ -272,11 +272,11 @@ export default function BlogPage() {
                     <div className="p-8 flex flex-col flex-grow">
                       <div className="flex items-center gap-4 mb-4 text-sm text-neutral-600 dark:text-neutral-400">
                         <div className="flex items-center gap-2">
-                          <FaUser className="text-xs" />
+                          <User className="w-3.5 h-3.5" />
                           <span>{post.author.username}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <FaClock className="text-xs" />
+                          <Clock className="w-3.5 h-3.5" />
                           <span>{formatDate(post.publishedDate)}</span>
                         </div>
                       </div>
@@ -298,7 +298,7 @@ export default function BlogPage() {
                               key={index}
                               className="inline-flex items-center gap-1 px-3 py-1 bg-neutral-100 dark:bg-neutral-800/50 text-neutral-700 dark:text-neutral-300 text-xs font-medium rounded-full"
                             >
-                              <FaTag className="text-xs" />
+                              <Tag className="w-3 h-3" />
                               {tag}
                             </span>
                           ))}

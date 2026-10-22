@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaSave, FaImage, FaTimes, FaArrowLeft, FaPlus, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { Save, Image as ImageIcon, X, ArrowLeft, Plus, ExternalLink } from 'lucide-react';
+import { FaGithub } from '@/components/icons/BrandIcons';
 import axios from 'axios';
 import { cookieUtils } from '@/lib/cookies';
 
@@ -223,7 +224,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
           onClick={() => router.push('/portfolio')}
           className="flex items-center text-neutral-600 dark:text-neutral-300 hover:text-neutral-800 dark:hover:text-white transition-colors"
         >
-          <FaArrowLeft className="mr-2" /> Back to Portfolio
+          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Portfolio
         </button>
         
         <button
@@ -231,7 +232,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
           disabled={loading}
           className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors disabled:opacity-50"
         >
-          <FaSave className="mr-2" /> {loading ? 'Saving...' : 'Save Project'}
+          <Save className="w-4 h-4 mr-2" /> {loading ? 'Saving...' : 'Save Project'}
         </button>
       </div>
 
@@ -289,7 +290,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
           <div className="space-y-3">
             <div className="flex items-center gap-4">
               <label className="flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-lg cursor-pointer hover:bg-purple-200 dark:hover:bg-purple-800/30 transition-colors">
-                <FaImage className="mr-2" />
+                <ImageIcon className="w-4 h-4 mr-2" />
                 {imageUploading ? 'Uploading...' : 'Upload Image'}
                 <input
                   type="file"
@@ -320,7 +321,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
                   onClick={() => setProject(prev => ({ ...prev, imageUrl: '' }))}
                   className="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                 >
-                  <FaTimes />
+                  <X className="w-4 h-4" />
                 </button>
               </div>
             )}
@@ -330,7 +331,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300 font-medium mb-2">
-              <FaGithub /> GitHub URL
+              <FaGithub className="w-4 h-4" /> GitHub URL
             </label>
             <input
               type="text"
@@ -344,7 +345,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
           
           <div>
             <label className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300 font-medium mb-2">
-              <FaExternalLinkAlt /> Live Demo URL
+              <ExternalLink className="w-4 h-4" /> Live Demo URL
             </label>
             <input
               type="text"
@@ -372,7 +373,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
                   onClick={() => removeTechnology(tech)}
                   className="ml-2 text-neutral-500 hover:text-red-500"
                 >
-                  <FaTimes size={12} />
+                  <X size={12} />
                 </button>
               </span>
             ))}
@@ -390,7 +391,7 @@ export default function PortfolioEditorForm({ projectId }: PortfolioEditorFormPr
               onClick={addTechnology}
               className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-lg hover:bg-indigo-200 dark:hover:bg-indigo-800/30 transition-colors"
             >
-              <FaPlus />
+              <Plus className="w-4 h-4" />
             </button>
           </div>
         </div>

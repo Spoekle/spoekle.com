@@ -4,18 +4,18 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { 
-  FaUser, 
-  FaEnvelope, 
-  FaLock, 
-  FaCamera, 
-  FaDiscord, 
-  FaCheck, 
-  FaTimes, 
-  FaUpload, 
-  FaEdit,
-  FaEye,
-  FaEyeSlash
-} from 'react-icons/fa';
+  User, 
+  Mail, 
+  Lock, 
+  Camera, 
+  Check, 
+  X, 
+  Upload, 
+  Pencil, 
+  Eye, 
+  EyeOff 
+} from 'lucide-react';
+import { FaDiscord } from '@/components/icons/BrandIcons';
 import axios from 'axios';
 import { useAuth } from '@/context/AuthContext';
 import { useNotification } from '@/context/NotificationContext';
@@ -198,7 +198,7 @@ export default function ProfilePage() {
                 : 'bg-neutral-300 dark:bg-neutral-700 text-neutral-800 dark:text-white'
             }`}
           >
-            <FaUser /> My Profile
+            <User className="w-4 h-4" /> My Profile
           </button>
           <button
             onClick={() => setActiveTab('avatar')}
@@ -208,7 +208,7 @@ export default function ProfilePage() {
                 : 'bg-neutral-300 dark:bg-neutral-700 text-neutral-800 dark:text-white'
             }`}
           >
-            <FaCamera /> Profile Picture
+            <Camera className="w-4 h-4" /> Profile Picture
           </button>
           <button
             onClick={() => setActiveTab('connections')}
@@ -232,13 +232,13 @@ export default function ProfilePage() {
             className="p-6 md:p-8 bg-neutral-300 dark:bg-neutral-800 text-neutral-900 dark:text-white transition duration-200 rounded-xl shadow-md hover:shadow-lg"
           >
             <h2 className="text-2xl font-bold mb-6 border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-              <FaEdit className="mr-2" /> Edit Profile
+              <Pencil className="w-5 h-5 mr-2" /> Edit Profile
             </h2>
 
             <form onSubmit={handleProfileUpdate} className="space-y-6">
               <div className="flex flex-col">
                 <label className="mb-2 font-medium text-neutral-800 dark:text-gray-200 flex items-center">
-                  <FaUser className="mr-2" /> Username:
+                  <User className="w-4 h-4 mr-2" /> Username:
                 </label>
                 <div className="relative">
                   <input
@@ -248,13 +248,13 @@ export default function ProfilePage() {
                     className="p-3 pl-10 w-full rounded-lg bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white border border-neutral-400 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                     placeholder="Enter your username"
                   />
-                  <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+                  <User className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                 </div>
               </div>
 
               <div className="flex flex-col">
                 <label className="mb-2 font-medium text-neutral-800 dark:text-gray-200 flex items-center">
-                  <FaEnvelope className="mr-2" /> Email:
+                  <Mail className="w-4 h-4 mr-2" /> Email:
                 </label>
                 <div className="relative">
                   <input
@@ -264,13 +264,13 @@ export default function ProfilePage() {
                     className="p-3 pl-10 w-full rounded-lg bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white border border-neutral-400 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                     placeholder="Enter your email address"
                   />
-                  <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+                  <Mail className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                 </div>
               </div>
 
               <div className="flex flex-col">
                 <label className="mb-2 font-medium text-neutral-800 dark:text-gray-200 flex items-center">
-                  <FaLock className="mr-2" /> Password:
+                  <Lock className="w-4 h-4 mr-2" /> Password:
                 </label>
                 <div className="relative">
                   <input
@@ -280,14 +280,14 @@ export default function ProfilePage() {
                     className="p-3 pl-10 pr-10 w-full rounded-lg bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white border border-neutral-400 dark:border-neutral-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
                     placeholder="Leave blank to keep current password"
                   />
-                  <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+                  <Lock className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                   
                   <button 
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 focus:outline-none"
                   >
-                    {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -303,7 +303,7 @@ export default function ProfilePage() {
                   <span className="inline-block animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></span>
                 ) : (
                   <>
-                    <FaCheck className="mr-2" /> Update Profile
+                    <Check className="w-4 h-4 mr-2" /> Update Profile
                   </>
                 )}
               </motion.button>
@@ -321,7 +321,7 @@ export default function ProfilePage() {
             className="p-6 md:p-8 bg-neutral-300 dark:bg-neutral-800 text-neutral-900 dark:text-white transition duration-200 rounded-xl shadow-md hover:shadow-lg"
           >
             <h2 className="text-2xl font-bold mb-6 border-b pb-3 border-neutral-400 dark:border-neutral-700 flex items-center">
-              <FaCamera className="mr-2" /> Profile Picture
+              <Camera className="w-5 h-5 mr-2" /> Profile Picture
             </h2>
 
             <div className="flex flex-col md:flex-row items-center gap-8">
@@ -342,7 +342,7 @@ export default function ProfilePage() {
                 <form onSubmit={handleProfilePictureUpload} className="space-y-6">
                   <div className="flex flex-col">
                     <label className="mb-2 font-medium text-neutral-800 dark:text-gray-200 flex items-center">
-                      <FaUpload className="mr-2" /> Upload New Image:
+                      <Upload className="w-4 h-4 mr-2" /> Upload New Image:
                     </label>
                     
                     <div className="mt-1 relative">
@@ -357,7 +357,7 @@ export default function ProfilePage() {
                         htmlFor="profile-picture-upload" 
                         className="cursor-pointer flex items-center justify-center w-full p-3 bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-white rounded-lg border border-dashed border-neutral-400 dark:border-neutral-600 hover:bg-neutral-300 dark:hover:bg-neutral-600 transition duration-200"
                       >
-                        <FaCamera className="mr-2" />
+                        <Camera className="w-4 h-4 mr-2" />
                         <span>Select an image</span>
                       </label>
                       {profilePicture && (
@@ -387,7 +387,7 @@ export default function ProfilePage() {
                       <span className="inline-block animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></span>
                     ) : (
                       <>
-                        <FaUpload className="mr-2" /> Upload New Picture
+                        <Upload className="w-4 h-4 mr-2" /> Upload New Picture
                       </>
                     )}
                   </motion.button>
@@ -442,7 +442,7 @@ export default function ProfilePage() {
                       <span className="inline-block animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white"></span>
                     ) : (
                       <>
-                        <FaTimes /> Unlink Discord Account
+                        <X className="w-4 h-4" /> Unlink Discord Account
                       </>
                     )}
                   </motion.button>

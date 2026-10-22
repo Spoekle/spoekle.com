@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaUser, FaCode, FaDesktop } from 'react-icons/fa';
+import { User, Code2, Monitor } from 'lucide-react';
 import DefaultLayout from '@/components/DefaultLayout';
 import Me from './components/Me';
 import Skills from './components/Skills';
@@ -52,7 +52,7 @@ function AboutPageContent() {
                 : 'text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10'
             }`}
           >
-            <FaUser />
+            <User className="w-5 h-5" />
             <span>About Me</span>
           </button>
           <button
@@ -63,7 +63,7 @@ function AboutPageContent() {
                 : 'text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10'
             }`}
           >
-            <FaCode />
+            <Code2 className="w-5 h-5" />
             <span>Skills</span>
           </button>
           <button
@@ -74,7 +74,7 @@ function AboutPageContent() {
                 : 'text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-black/10 dark:hover:bg-white/10'
             }`}
           >
-            <FaDesktop />
+            <Monitor className="w-5 h-5" />
             <span>My Gear</span>
           </button>
         </motion.div>

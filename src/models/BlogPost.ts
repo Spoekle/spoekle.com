@@ -35,7 +35,7 @@ const blogPostSchema = new Schema<IBlogPost>(
 blogPostSchema.index({ title: 'text', content: 'text', tags: 'text' });
 
 // Create a pre-save hook to generate a slug if one isn't provided
-blogPostSchema.pre('save', function (next) {
+blogPostSchema.pre('save', function () {
   if (!this.slug) {
     this.slug = this.title
       .toLowerCase()
@@ -43,7 +43,6 @@ blogPostSchema.pre('save', function (next) {
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
   }
-  next();
 });
 
 const BlogPost: Model<IBlogPost> =

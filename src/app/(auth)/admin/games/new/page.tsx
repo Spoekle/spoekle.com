@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaPlus, FaTrash, FaUpload } from 'react-icons/fa';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { ArrowLeft, Plus, Trash2, Upload, Loader2 } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '@/context/AuthContext';
 import { useNotification } from '@/context/NotificationContext';
@@ -191,7 +190,7 @@ export default function NewGamePage() {
           onClick={() => router.push('/admin?tab=games')}
           className="mb-6 flex items-center gap-2 px-4 py-2 bg-white/80 dark:bg-neutral-800 hover:bg-white dark:hover:bg-neutral-700 rounded-lg transition-colors shadow-md"
         >
-          <FaArrowLeft />
+          <ArrowLeft className="w-4 h-4" />
           Back to Admin
         </button>
 
@@ -267,7 +266,7 @@ export default function NewGamePage() {
                         htmlFor="image-upload"
                         className="flex items-center justify-center gap-2 w-full px-4 py-2 border-2 border-dashed border-neutral-300 dark:border-neutral-600 rounded-lg cursor-pointer hover:border-indigo-500 dark:hover:border-indigo-500 transition-colors bg-white dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300"
                       >
-                        <FaUpload />
+                        <Upload className="w-4 h-4" />
                         {imageFile ? imageFile.name : 'Upload Image'}
                       </label>
                     </div>
@@ -305,7 +304,7 @@ export default function NewGamePage() {
                     placeholder="e.g., SiUnity"
                     required
                   />
-                  <p className="text-xs text-neutral-500 mt-1">From react-icons</p>
+                  <p className="text-xs text-neutral-500 mt-1">Icon name</p>
                 </div>
 
                 <div>
@@ -335,7 +334,7 @@ export default function NewGamePage() {
                   onClick={addAboutParagraph}
                   className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center gap-2"
                 >
-                  <FaPlus /> Add Paragraph
+                  <Plus className="w-4 h-4" /> Add Paragraph
                 </button>
               </div>
 
@@ -355,7 +354,7 @@ export default function NewGamePage() {
                       onClick={() => removeAboutParagraph(index)}
                       className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg"
                     >
-                      <FaTrash />
+                      <Trash2 className="w-4 h-4" />
                     </button>
                   )}
                 </div>
@@ -387,7 +386,7 @@ export default function NewGamePage() {
                   onClick={addDownload}
                   className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg flex items-center gap-2"
                 >
-                  <FaPlus /> Add Download
+                  <Plus className="w-4 h-4" /> Add Download
                 </button>
               </div>
 
@@ -400,7 +399,7 @@ export default function NewGamePage() {
                       onClick={() => removeDownload(index)}
                       className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm"
                     >
-                      <FaTrash />
+                      <Trash2 className="w-4 h-4" />
                     </button>
                   </div>
                   <input
@@ -461,7 +460,7 @@ export default function NewGamePage() {
               >
                 {loading ? (
                   <>
-                    <BiLoaderCircle className="animate-spin" />
+                    <Loader2 className="animate-spin w-4 h-4" />
                     Creating...
                   </>
                 ) : (

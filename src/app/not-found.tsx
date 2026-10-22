@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaHome } from 'react-icons/fa';
+import { Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
@@ -30,7 +30,7 @@ export default function NotFound() {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-6 py-3 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium rounded-xl shadow-lg transition-all"
             >
-              <FaHome />
+              <Home className="w-5 h-5" />
               Go Back Home
             </motion.button>
           </Link>

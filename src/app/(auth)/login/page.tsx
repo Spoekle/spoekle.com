@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUser, FaSpinner, FaDiscord, FaTimes, FaEnvelope, FaLock } from 'react-icons/fa';
-import { MdLogin } from 'react-icons/md';
+import { User, Loader2, X, Mail, Lock, LogIn } from 'lucide-react';
+import { FaDiscord } from '@/components/icons/BrandIcons';
 import axios from 'axios';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useNotification } from '@/context/NotificationContext';
@@ -173,7 +173,7 @@ function LoginPageContent() {
                           className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your username"
                         />
-                        <FaUser className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+                        <User className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                       </div>
                     </div>
                     
@@ -191,7 +191,7 @@ function LoginPageContent() {
                           className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white focus:border-transparent text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your password"
                         />
-                        <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
+                        <Lock className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
                       </div>
                     </div>
                     
@@ -219,7 +219,7 @@ function LoginPageContent() {
                       whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                       className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <MdLogin className="mr-2 h-5 w-5" />}
+                      {isSubmitting ? <Loader2 className="animate-spin mr-2 h-5 w-5" /> : <LogIn className="mr-2 h-5 w-5" />}
                       Sign in
                     </motion.button>
                   </form>
@@ -265,7 +265,7 @@ function LoginPageContent() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <FaTimes className="h-5 w-5" />
+                      <X className="h-5 w-5" />
                     </motion.button>
                   </div>
                   
@@ -291,7 +291,7 @@ function LoginPageContent() {
                           className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Choose a username"
                         />
-                        <FaUser className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
+                        <User className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
                       </div>
                     </div>
                     
@@ -306,7 +306,7 @@ function LoginPageContent() {
                           className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Enter your email"
                         />
-                        <FaEnvelope className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
+                        <Mail className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
                       </div>
                     </div>
                     
@@ -321,7 +321,7 @@ function LoginPageContent() {
                           className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                           placeholder="Create a strong password"
                         />
-                        <FaLock className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
+                        <Lock className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
                       </div>
                     </div>
                     
@@ -332,7 +332,7 @@ function LoginPageContent() {
                       whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                       className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <MdLogin className="mr-2 h-5 w-5" />}
+                      {isSubmitting ? <Loader2 className="animate-spin mr-2 h-5 w-5" /> : <LogIn className="mr-2 h-5 w-5" />}
                       Create Account
                     </motion.button>
                   </form>
@@ -364,7 +364,7 @@ function LoginPageContent() {
                       className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 rounded-full p-1.5"
                       whileHover={{ scale: 1.05 }}
                     >
-                      <FaTimes className="h-5 w-5" />
+                      <X className="h-5 w-5" />
                     </motion.button>
                   </div>
                   
@@ -382,7 +382,7 @@ function LoginPageContent() {
                         className="w-full px-4 py-2.5 pl-11 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-neutral-900 dark:focus:ring-white text-neutral-900 dark:text-white transition-all duration-300"
                         placeholder="Enter your email"
                       />
-                      <FaEnvelope className="absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
+                      <Mail className="w-5 h-5 absolute left-3.5 top-1/2 transform -translate-y-1/2 text-neutral-500" />
                     </div>
                   </div>
                   
@@ -394,7 +394,7 @@ function LoginPageContent() {
                     whileTap={{ scale: awaitingReset ? 1 : 0.95 }}
                     className="w-full flex justify-center items-center py-3 px-4 rounded-xl text-sm font-medium bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {awaitingReset ? <FaSpinner className="animate-spin mr-2 h-5 w-5" /> : <FaEnvelope className="mr-2 h-5 w-5" />}
+                    {awaitingReset ? <Loader2 className="animate-spin mr-2 h-5 w-5" /> : <Mail className="mr-2 h-5 w-5" />}
                     {awaitingReset ? 'Sending...' : 'Send Reset Instructions'}
                   </motion.button>
                   
@@ -429,7 +429,7 @@ export default function LoginPage() {
         <div className="py-16 bg-neutral-200/40 dark:bg-neutral-950/40 backdrop-blur-sm rounded-2xl">
           <div className="container mx-auto px-4 md:px-8 flex items-center justify-center">
             <div className="text-center">
-              <FaSpinner className="animate-spin text-4xl mx-auto mb-4 text-neutral-900 dark:text-white" />
+              <Loader2 className="animate-spin text-4xl mx-auto mb-4 text-neutral-900 dark:text-white" />
               <p className="text-neutral-900 dark:text-white">Loading...</p>
             </div>
           </div>

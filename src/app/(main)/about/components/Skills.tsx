@@ -2,8 +2,30 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { SiReact, SiNodedotjs, SiMongodb, SiJavascript, SiMysql, SiSharp, SiPython, SiUnity, SiBlender, SiTailwindcss, SiExpress, SiAdobepremierepro, SiAdobelightroom, SiAdobephotoshop, SiTypescript, SiNextdotjs, SiGodotengine, SiGithub, SiGit, SiSvelte, SiElectron } from 'react-icons/si';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { Loader2 } from 'lucide-react';
+import {
+  SiReact,
+  SiNodedotjs,
+  SiMongodb,
+  SiJavascript,
+  SiMysql,
+  SiSharp,
+  SiPython,
+  SiUnity,
+  SiBlender,
+  SiTailwindcss,
+  SiExpress,
+  SiAdobepremierepro,
+  SiAdobelightroom,
+  SiAdobephotoshop,
+  SiTypescript,
+  SiNextdotjs,
+  SiGodotengine,
+  SiGithub,
+  SiGit,
+  SiSvelte,
+  SiElectron,
+} from '@/components/icons/BrandIcons';
 
 interface LanguageStat {
   language: string;
@@ -192,7 +214,7 @@ export default function Skills() {
 
           {loadingGithub ? (
             <div className="flex justify-center items-center py-12">
-              <BiLoaderCircle className="animate-spin text-5xl text-neutral-900 dark:text-white" />
+              <Loader2 className="animate-spin w-12 h-12 text-neutral-900 dark:text-white" />
             </div>
           ) : githubLanguages.length > 0 ? (
             <motion.div

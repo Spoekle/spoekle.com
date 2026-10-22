@@ -3,9 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaArrowLeft, FaDownload } from 'react-icons/fa';
-import { SiUnity, SiBlockbench } from 'react-icons/si';
-import { BiLoaderCircle } from 'react-icons/bi';
+import { ArrowLeft, Download, Loader2 } from 'lucide-react';
+import { SiUnity, SiBlockbench } from '@/components/icons/BrandIcons';
 import DefaultLayout from '@/components/DefaultLayout';
 import Image from 'next/image';
 import { getGameById, Game } from '../gamesData';
@@ -78,7 +77,7 @@ export default function GamePage() {
         backgroundImage="/assets/spoekleGame.webp"
       >
         <div className="flex justify-center items-center py-16">
-          <BiLoaderCircle className="animate-spin text-5xl text-neutral-900 dark:text-white" />
+          <Loader2 className="animate-spin w-12 h-12 text-neutral-900 dark:text-white" />
         </div>
       </DefaultLayout>
     );
@@ -130,7 +129,7 @@ export default function GamePage() {
           onClick={() => router.push('/games')}
           className="flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-neutral-900/50 backdrop-blur-xl border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:bg-white/20 rounded-xl transition-all duration-300 shadow-lg dark:shadow-none font-semibold text-neutral-900 dark:text-white"
         >
-          <FaArrowLeft />
+          <ArrowLeft className="w-5 h-5" />
           Back to Gaming
         </button>
 
@@ -212,7 +211,7 @@ export default function GamePage() {
                         download
                         className={`inline-flex items-center gap-2 px-6 py-3 ${getButtonColor(download.buttonColor)} text-white rounded-xl font-semibold transition-all duration-300 hover:scale-105`}
                       >
-                        <FaDownload />
+                        <Download className="w-5 h-5" />
                         Download
                       </a>
                     </motion.div>
